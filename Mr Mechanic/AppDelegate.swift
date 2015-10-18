@@ -16,18 +16,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        Parse.setApplicationId("HEJmj368db3vjcSG4u2kGkgDkPZvohy7XNQXLOnX",
+            clientKey: "fKyQg8bEXrdoOdsv58FV45QzAgqTagWBFtcA3rIU")
         
         
-        let navColor:UIColor = UIColor(netHex: 0x272727)
-        let tintColor:UIColor = UIColor(netHex: 0x474747)
         
-        UINavigationBar.appearance().backgroundColor = navColor
-        UIBarButtonItem.appearance().tintColor = tintColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: navColor]
-        //UITabBar.appearance().backgroundColor = UIColor.yellowColor();
         
-        // let color = UIColor(red: 194/255, green: 0/255, blue: 4/255, alpha: 1.0)
-        UITabBar.appearance().tintColor = navColor
+        
+        //let navColor:UIColor = UIColor(netHex: 0x3F51B5)
+       // let navColor = UIColor(patternImage: UIImage(named: "MMBar")!)
+        
+        let tintColor:UIColor = UIColor(netHex: 0x000000)
+        let titleColor:UIColor = UIColor(netHex: 0x212121)
+        let barTintColor:UIColor = UIColor(netHex: 0xfa3562)
+        //UINavigationBar.appearance().backgroundColor = navColor
+        UINavigationBar.appearance().tintColor = tintColor
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: titleColor]
+//      UIBarButtonItem.appearance().tintColor = tintColor
+//      UITabBar.appearance().backgroundColor = navColor  
+//      let color = UIColor(red: 194/255, green: 0/255, blue: 4/255, alpha: 1.0)
+            UITabBar.appearance().tintColor = barTintColor
+        UILabel.appearance().textColor = tintColor
         
         return true
     }
