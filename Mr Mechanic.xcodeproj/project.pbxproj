@@ -23,6 +23,9 @@
 		FA1C6E731BD19F3B0047071D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1C6E721BD19F3B0047071D /* AudioToolbox.framework */; };
 		FA1C6E751BD19F4B0047071D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1C6E741BD19F4B0047071D /* Accounts.framework */; };
 		FA4020A31BD12A82001DF28A /* MMAboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4020A21BD12A82001DF28A /* MMAboutUsTableViewCell.swift */; };
+		FA468B931BD41CCB00368349 /* MMSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA468B921BD41CCA00368349 /* MMSocialViewController.swift */; };
+		FA468B951BD4304700368349 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA468B941BD4304700368349 /* Social.framework */; };
+		FA468B971BD440C100368349 /* RestApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA468B961BD440C100368349 /* RestApiManager.swift */; };
 		FA5C67FE1BD16C4A00B836E0 /* MMSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C67FD1BD16C4A00B836E0 /* MMSuggestionViewController.swift */; };
 		FA8C9EFE1BC59F3D00A81384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C9EFD1BC59F3D00A81384 /* AppDelegate.swift */; };
 		FA8C9F031BC59F3D00A81384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8C9F011BC59F3D00A81384 /* Main.storyboard */; };
@@ -31,19 +34,25 @@
 		FA8C9F131BC59F3D00A81384 /* Mr_MechanicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C9F121BC59F3D00A81384 /* Mr_MechanicTests.swift */; };
 		FA8C9F1E1BC59F3E00A81384 /* Mr_MechanicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C9F1D1BC59F3E00A81384 /* Mr_MechanicUITests.swift */; };
 		FA8C9F2D1BC59F9E00A81384 /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C9F2C1BC59F9E00A81384 /* colors.swift */; };
-		FA8C9F2F1BC5A73A00A81384 /* MechMapNeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C9F2E1BC5A73900A81384 /* MechMapNeed.swift */; };
+		FA8FD3851BD61745009C06C4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD37D1BD61745009C06C4 /* DetailViewController.swift */; };
+		FA8FD3861BD61745009C06C4 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD37E1BD61745009C06C4 /* MainTableViewController.swift */; };
+		FA8FD3871BD61745009C06C4 /* MMMechanicDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD37F1BD61745009C06C4 /* MMMechanicDataModel.swift */; };
+		FA8FD3881BD61745009C06C4 /* MMOFFlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD3801BD61745009C06C4 /* MMOFFlineTableViewCell.swift */; };
+		FA8FD3891BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD3811BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift */; };
+		FA8FD38A1BD61745009C06C4 /* MMOFFlineTResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD3821BD61745009C06C4 /* MMOFFlineTResultsTableController.swift */; };
+		FA8FD38B1BD61745009C06C4 /* MMOFFlineTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD3831BD61745009C06C4 /* MMOFFlineTViewController.swift */; };
+		FA8FD38C1BD61745009C06C4 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8FD3841BD61745009C06C4 /* TableViewCell.xib */; };
 		FA9315921BD275CF00DBC5EF /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9315911BD275CF00DBC5EF /* libz.1.dylib */; };
 		FA9315941BD275FF00DBC5EF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9315931BD275FF00DBC5EF /* libsqlite3.dylib */; };
 		FA941DC01BD2C41700710319 /* MMOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA941DBF1BD2C41700710319 /* MMOnlineViewController.swift */; };
 		FAA014871BCD9CBB0004E099 /* OfflineApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA014861BCD9CBB0004E099 /* OfflineApi.swift */; };
 		FAA014891BCD9E860004E099 /* res.json in Resources */ = {isa = PBXBuildFile; fileRef = FAA014881BCD9E860004E099 /* res.json */; };
 		FAAF5EAE1BCE0186001C2B4C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF5EAD1BCE0186001C2B4C /* SwiftyJSON.swift */; };
-		FAAF5EB21BCE26D8001C2B4C /* MMOfflineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF5EB11BCE26D8001C2B4C /* MMOfflineTableViewController.swift */; };
-		FAAF5EB61BCE27FA001C2B4C /* MMOfflineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF5EB51BCE27FA001C2B4C /* MMOfflineTableViewCell.swift */; };
 		FAC9C5F41BD14880009B2802 /* MMUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9C5F31BD14880009B2802 /* MMUITabBarController.swift */; };
 		FADEA9C81BD2CB8B00C1BCB7 /* MMOnlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEA9C71BD2CB8B00C1BCB7 /* MMOnlineTableViewCell.swift */; };
 		FADEA9CA1BD2D5FC00C1BCB7 /* MMOnlineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEA9C91BD2D5FB00C1BCB7 /* MMOnlineModel.swift */; };
 		FAE6E2B11BD125CC0014A4B3 /* MMAboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE6E2B01BD125CB0014A4B3 /* MMAboutUsViewController.swift */; };
+		FAFF8E871BD4BEA400D93CB4 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = FAFF8E861BD4BEA400D93CB4 /* response.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +91,9 @@
 		FA1C6E761BD19F7B0047071D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		FA1C6E771BD19F7B0047071D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		FA4020A21BD12A82001DF28A /* MMAboutUsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMAboutUsTableViewCell.swift; sourceTree = "<group>"; };
+		FA468B921BD41CCA00368349 /* MMSocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSocialViewController.swift; sourceTree = "<group>"; };
+		FA468B941BD4304700368349 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		FA468B961BD440C100368349 /* RestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestApiManager.swift; sourceTree = "<group>"; };
 		FA5C67FD1BD16C4A00B836E0 /* MMSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSuggestionViewController.swift; sourceTree = "<group>"; };
 		FA67041B1BD218B200F1CE17 /* Mr Mechanic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Mr Mechanic-Bridging-Header.h"; path = "Mr Mechanic/Mr Mechanic-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA8C9EFA1BC59F3D00A81384 /* Mr Mechanic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mr Mechanic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,7 +109,14 @@
 		FA8C9F1D1BC59F3E00A81384 /* Mr_MechanicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mr_MechanicUITests.swift; sourceTree = "<group>"; };
 		FA8C9F1F1BC59F3E00A81384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA8C9F2C1BC59F9E00A81384 /* colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colors.swift; sourceTree = "<group>"; };
-		FA8C9F2E1BC5A73900A81384 /* MechMapNeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MechMapNeed.swift; sourceTree = "<group>"; };
+		FA8FD37D1BD61745009C06C4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FA8FD37E1BD61745009C06C4 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		FA8FD37F1BD61745009C06C4 /* MMMechanicDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMMechanicDataModel.swift; sourceTree = "<group>"; };
+		FA8FD3801BD61745009C06C4 /* MMOFFlineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOFFlineTableViewCell.swift; sourceTree = "<group>"; };
+		FA8FD3811BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOFFlineTBaseTableViewController.swift; sourceTree = "<group>"; };
+		FA8FD3821BD61745009C06C4 /* MMOFFlineTResultsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOFFlineTResultsTableController.swift; sourceTree = "<group>"; };
+		FA8FD3831BD61745009C06C4 /* MMOFFlineTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOFFlineTViewController.swift; sourceTree = "<group>"; };
+		FA8FD3841BD61745009C06C4 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		FA9315911BD275CF00DBC5EF /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = /usr/lib/libz.1.dylib; sourceTree = "<absolute>"; };
 		FA9315931BD275FF00DBC5EF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
 		FA941DBF1BD2C41700710319 /* MMOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOnlineViewController.swift; sourceTree = "<group>"; };
@@ -105,12 +124,11 @@
 		FAA014881BCD9E860004E099 /* res.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = res.json; path = "Mr Mechanic/res.json"; sourceTree = "<group>"; };
 		FAAF5EAD1BCE0186001C2B4C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		FAAF5EAF1BCE05B3001C2B4C /* SwiftyJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
-		FAAF5EB11BCE26D8001C2B4C /* MMOfflineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOfflineTableViewController.swift; sourceTree = "<group>"; };
-		FAAF5EB51BCE27FA001C2B4C /* MMOfflineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOfflineTableViewCell.swift; sourceTree = "<group>"; };
 		FAC9C5F31BD14880009B2802 /* MMUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMUITabBarController.swift; sourceTree = "<group>"; };
 		FADEA9C71BD2CB8B00C1BCB7 /* MMOnlineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOnlineTableViewCell.swift; sourceTree = "<group>"; };
 		FADEA9C91BD2D5FB00C1BCB7 /* MMOnlineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOnlineModel.swift; sourceTree = "<group>"; };
 		FAE6E2B01BD125CB0014A4B3 /* MMAboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMAboutUsViewController.swift; sourceTree = "<group>"; };
+		FAFF8E861BD4BEA400D93CB4 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA468B951BD4304700368349 /* Social.framework in Frameworks */,
 				FA9315941BD275FF00DBC5EF /* libsqlite3.dylib in Frameworks */,
 				FA9315921BD275CF00DBC5EF /* libz.1.dylib in Frameworks */,
 				FA1C6E751BD19F4B0047071D /* Accounts.framework in Frameworks */,
@@ -176,16 +195,17 @@
 		FA8C9EFC1BC59F3D00A81384 /* Mr Mechanic */ = {
 			isa = PBXGroup;
 			children = (
+				FA8FD38D1BD6174F009C06C4 /* MMOffline */,
 				FAB902F21BC7F9850074A87E /* Frameworks */,
 				FAAF5EB31BCE26E9001C2B4C /* SwiftyJSON */,
 				FA914F421BC5B39200539A20 /* Delegate */,
 				FADEA9C61BD2CB3800C1BCB7 /* Online */,
 				FAE6E2AF1BD1257B0014A4B3 /* AboutUS */,
-				FAAF5EB01BCE1BB8001C2B4C /* Offline */,
 				FA914F401BC5B35B00539A20 /* Model */,
 				FA8C9F2B1BC59F4B00A81384 /* Extensions */,
 				FAAF5EB41BCE270F001C2B4C /* assets */,
 				FA8C9F011BC59F3D00A81384 /* Main.storyboard */,
+				FA8FD3841BD61745009C06C4 /* TableViewCell.xib */,
 				FA8C9F061BC59F3D00A81384 /* LaunchScreen.storyboard */,
 				FA8C9F041BC59F3D00A81384 /* Assets.xcassets */,
 				FA8C9F091BC59F3D00A81384 /* Info.plist */,
@@ -219,12 +239,26 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		FA8FD38D1BD6174F009C06C4 /* MMOffline */ = {
+			isa = PBXGroup;
+			children = (
+				FA8FD37D1BD61745009C06C4 /* DetailViewController.swift */,
+				FA8FD37E1BD61745009C06C4 /* MainTableViewController.swift */,
+				FA8FD37F1BD61745009C06C4 /* MMMechanicDataModel.swift */,
+				FA8FD3801BD61745009C06C4 /* MMOFFlineTableViewCell.swift */,
+				FA8FD3811BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift */,
+				FA8FD3821BD61745009C06C4 /* MMOFFlineTResultsTableController.swift */,
+				FA8FD3831BD61745009C06C4 /* MMOFFlineTViewController.swift */,
+			);
+			name = MMOffline;
+			sourceTree = "<group>";
+		};
 		FA914F401BC5B35B00539A20 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA8C9F2E1BC5A73900A81384 /* MechMapNeed.swift */,
 				FA02B1E71BC6FE8C00B7D700 /* ApiModel.swift */,
 				FAA014861BCD9CBB0004E099 /* OfflineApi.swift */,
+				FA468B961BD440C100368349 /* RestApiManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -236,15 +270,6 @@
 				FA8C9EFD1BC59F3D00A81384 /* AppDelegate.swift */,
 			);
 			name = Delegate;
-			sourceTree = "<group>";
-		};
-		FAAF5EB01BCE1BB8001C2B4C /* Offline */ = {
-			isa = PBXGroup;
-			children = (
-				FAAF5EB11BCE26D8001C2B4C /* MMOfflineTableViewController.swift */,
-				FAAF5EB51BCE27FA001C2B4C /* MMOfflineTableViewCell.swift */,
-			);
-			name = Offline;
 			sourceTree = "<group>";
 		};
 		FAAF5EB31BCE26E9001C2B4C /* SwiftyJSON */ = {
@@ -260,6 +285,7 @@
 		FAAF5EB41BCE270F001C2B4C /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				FAFF8E861BD4BEA400D93CB4 /* response.json */,
 				FA67041B1BD218B200F1CE17 /* Mr Mechanic-Bridging-Header.h */,
 				FAA014881BCD9E860004E099 /* res.json */,
 			);
@@ -270,6 +296,7 @@
 		FAB902F21BC7F9850074A87E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA468B941BD4304700368349 /* Social.framework */,
 				FA9315931BD275FF00DBC5EF /* libsqlite3.dylib */,
 				FA9315911BD275CF00DBC5EF /* libz.1.dylib */,
 				FA1C6E761BD19F7B0047071D /* libsqlite3.0.tbd */,
@@ -309,6 +336,7 @@
 				FAE6E2B01BD125CB0014A4B3 /* MMAboutUsViewController.swift */,
 				FA4020A21BD12A82001DF28A /* MMAboutUsTableViewCell.swift */,
 				FA5C67FD1BD16C4A00B836E0 /* MMSuggestionViewController.swift */,
+				FA468B921BD41CCA00368349 /* MMSocialViewController.swift */,
 			);
 			name = AboutUS;
 			sourceTree = "<group>";
@@ -419,8 +447,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8C9F081BC59F3D00A81384 /* LaunchScreen.storyboard in Resources */,
+				FA8FD38C1BD61745009C06C4 /* TableViewCell.xib in Resources */,
 				FA8C9F051BC59F3D00A81384 /* Assets.xcassets in Resources */,
 				FAA014891BCD9E860004E099 /* res.json in Resources */,
+				FAFF8E871BD4BEA400D93CB4 /* response.json in Resources */,
 				FA8C9F031BC59F3D00A81384 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,20 +478,26 @@
 			files = (
 				FADEA9C81BD2CB8B00C1BCB7 /* MMOnlineTableViewCell.swift in Sources */,
 				FADEA9CA1BD2D5FC00C1BCB7 /* MMOnlineModel.swift in Sources */,
+				FA8FD3861BD61745009C06C4 /* MainTableViewController.swift in Sources */,
+				FA8FD38A1BD61745009C06C4 /* MMOFFlineTResultsTableController.swift in Sources */,
 				FAA014871BCD9CBB0004E099 /* OfflineApi.swift in Sources */,
 				FAC9C5F41BD14880009B2802 /* MMUITabBarController.swift in Sources */,
+				FA8FD3891BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift in Sources */,
+				FA8FD3871BD61745009C06C4 /* MMMechanicDataModel.swift in Sources */,
+				FA468B931BD41CCB00368349 /* MMSocialViewController.swift in Sources */,
+				FA8FD38B1BD61745009C06C4 /* MMOFFlineTViewController.swift in Sources */,
+				FA468B971BD440C100368349 /* RestApiManager.swift in Sources */,
 				FA036A3B1BC6F37D00EBDEBE /* MMViewController.swift in Sources */,
+				FA8FD3851BD61745009C06C4 /* DetailViewController.swift in Sources */,
 				FA02B1E81BC6FE8C00B7D700 /* ApiModel.swift in Sources */,
 				FA5C67FE1BD16C4A00B836E0 /* MMSuggestionViewController.swift in Sources */,
 				FA8C9F2D1BC59F9E00A81384 /* colors.swift in Sources */,
-				FAAF5EB21BCE26D8001C2B4C /* MMOfflineTableViewController.swift in Sources */,
 				FA4020A31BD12A82001DF28A /* MMAboutUsTableViewCell.swift in Sources */,
 				FA941DC01BD2C41700710319 /* MMOnlineViewController.swift in Sources */,
-				FAAF5EB61BCE27FA001C2B4C /* MMOfflineTableViewCell.swift in Sources */,
+				FA8FD3881BD61745009C06C4 /* MMOFFlineTableViewCell.swift in Sources */,
 				FA8C9EFE1BC59F3D00A81384 /* AppDelegate.swift in Sources */,
 				FAE6E2B11BD125CC0014A4B3 /* MMAboutUsViewController.swift in Sources */,
 				FAAF5EAE1BCE0186001C2B4C /* SwiftyJSON.swift in Sources */,
-				FA8C9F2F1BC5A73A00A81384 /* MechMapNeed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var offlineArray = [Mechanic]()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -21,46 +22,78 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        
-        
-        //let navColor:UIColor = UIColor(netHex: 0x3F51B5)
-       // let navColor = UIColor(patternImage: UIImage(named: "MMBar")!)
+        // Mark: - UI Tint and Baclground
         
         let tintColor:UIColor = UIColor(netHex: 0x000000)
         let titleColor:UIColor = UIColor(netHex: 0x212121)
         let barTintColor:UIColor = UIColor(netHex: 0xfa3562)
-        //UINavigationBar.appearance().backgroundColor = navColor
-        UINavigationBar.appearance().tintColor = tintColor
+        UINavigationBar.appearance().tintColor = barTintColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: titleColor]
-//      UIBarButtonItem.appearance().tintColor = tintColor
-//      UITabBar.appearance().backgroundColor = navColor  
-//      let color = UIColor(red: 194/255, green: 0/255, blue: 4/255, alpha: 1.0)
-            UITabBar.appearance().tintColor = barTintColor
+        UITabBar.appearance().tintColor = barTintColor
         UILabel.appearance().textColor = tintColor
         
+        
+        // Mark: - Offline Implementation
+        
+        if let path = NSBundle.mainBundle().pathForResource("response", ofType: "json") {
+            do {
+                let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path), options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                let jsonObj = JSON(data: data)
+                if jsonObj != JSON.nullJSON {
+                   // print("jsonData:\(jsonObj)")
+                    
+                    let results = jsonObj["results"].array
+                    if results != nil{
+                        
+                        // print("array is printing")
+                        for values in results!{
+                            let name = values["name"].stringValue
+                            let phone = values["ph"].intValue
+                            let lat = values["lat"].doubleValue
+                            let long = values["lon"].doubleValue
+                            let rating = values["rating"].floatValue
+                            let address = values["add"].stringValue
+                            let local = values["local"].stringValue
+                            let city = values["city"].stringValue
+                            let country = values["contry"].stringValue
+                            let offlineObject = Mechanic(name: name, phone: phone, latt: lat, long: long, rating: rating, address: address, local: local, city: city, country: country)
+                            offlineArray.append(offlineObject)
+                            
+                        }
+                    }
+                    
+                } else {
+                    print("could not get json from file, make sure that file contains valid json.")
+                }
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        } else {
+            print("Invalid filename/path.")
+        }
+        
+        
+        let tabController = window!.rootViewController as! UITabBarController
+        tabController.selectedIndex = 1
+        let navController = tabController.viewControllers!.first as! UINavigationController
+        let tableViewController = navController.viewControllers.first as! MainTableViewController
+        tableViewController.products = offlineArray
+        
+   
         return true
     }
 
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    
+    func application(application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+        return true
     }
-
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    func application(application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+        return true
     }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        return true
     }
 
 

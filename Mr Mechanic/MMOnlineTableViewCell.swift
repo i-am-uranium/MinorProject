@@ -20,6 +20,10 @@ class MMOnlineTableViewCell: UITableViewCell {
    
     @IBOutlet var phoneNumber: UILabel!
     
+    @IBOutlet var phone: UILabel!
+    
+    @IBOutlet var star: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

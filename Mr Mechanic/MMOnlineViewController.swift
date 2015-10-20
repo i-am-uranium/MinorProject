@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 
 class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationManagerDelegate {
+    
+    @IBOutlet var actInd: UIActivityIndicatorView!
+    let MAXDIS:Double = 20
     var lt:Double?
     var ln:Double?
     var locationMgr:CLLocationManager!
@@ -19,12 +22,15 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     var model:MMOnlineModel?
     @IBOutlet var tableview: UITableView!
     var timelineData:NSMutableArray = NSMutableArray()
-    
+    var distance = [Double]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
+        navigationItem.backBarButtonItem = backButton
         myLocationAction()
+        actInd.startAnimating()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
         self.title = "Mr Mechanic"
         
@@ -33,7 +39,9 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     override func viewDidAppear(animated: Bool) {
         loadData()
     }
-    
+    override func viewDidLayoutSubviews() {
+        //
+    }
     @IBAction func loadData(){
         timelineData.removeAllObjects()
         let findtimelineData:PFQuery = PFQuery(className:"res")
@@ -113,24 +121,43 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
         
         
         if self.dataStoring.count != 0 {
-        
-            let test = self.dataStoring[indexPath.row].name
-            cell.name.text = test!
-            //cell.address.text = self.dataStoring[indexPath.row].address!
-            cell.phoneNumber.text = String(self.dataStoring[indexPath.row].phone!)
-            cell.rating.text = String(self.dataStoring[indexPath.row].rating!)
-            let toLat = self.dataStoring[indexPath.row].latt
-            let toLon = self.dataStoring[indexPath.row].long
+            
             
             // Mark: - distance
-            let fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
-            let toLocation = CLLocation(latitude: toLat! , longitude: toLon!)
-            print(fromLocation)
-            print(toLocation)
-            let distance = fromLocation.distanceFromLocation(toLocation)
-            let approxDistance = distance / 1000.0
-            print(approxDistance)
-            cell.address.text = "distance From You is: " + String(format: "%.3f", approxDistance)
+            
+                let fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
+                let toLat = self.dataStoring[indexPath.row].latt
+                let toLon = self.dataStoring[indexPath.row].long
+                let toLocation = CLLocation(latitude: toLat! , longitude: toLon!)
+                print(fromLocation)
+                print(toLocation)
+                let distance = fromLocation.distanceFromLocation(toLocation)
+                let approxDistance = distance / 1000.0
+                self.distance.append(approxDistance)
+                print(self.distance)
+                print(approxDistance)
+            
+            
+            if self.distance[indexPath.row] < 12427 {
+            
+                let test = self.dataStoring[indexPath.row].name
+                cell.name.text = test!
+                //cell.address.text = self.dataStoring[indexPath.row].address!
+                cell.phoneNumber.text = String(self.dataStoring[indexPath.row].phone!)
+                cell.rating.text = String(self.dataStoring[indexPath.row].rating!)
+                cell.address.text = "distance From You is: " + String(format: "%.3f", approxDistance)
+                cell.phone.text = "Phone:"
+                cell.star.image = UIImage(named: "star-40")
+                actInd.stopAnimating()
+                return cell
+                
+            }
+            else {
+                actInd.stopAnimating()
+                print("no near by  mechanic shop")
+            }
+            
+           
         }else{
             let alert  = UIAlertController(title: "Oops!", message: "data not available switch to Offline Mode OR hit retry", preferredStyle: UIAlertControllerStyle.Alert)
             let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel){
@@ -145,15 +172,26 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
             self.presentViewController(alert, animated: true, completion: nil)
             
         }
-       
-        
-        
         return cell
     }
     
     
     
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    
+    
+
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+
+
+
     // MARK: - Navigation
     
     

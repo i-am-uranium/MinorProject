@@ -1,20 +1,22 @@
 //
-//  MMOfflineTableViewCell.swift
-//  Mr Mechanic
+//  TableViewCell.swift
+//  Serch
 //
-//  Created by Ravi Ranjan on 13/10/15.
+//  Created by Ravi Ranjan on 19/10/15.
 //  Copyright © 2015 Ravi Ranjan. All rights reserved.
 //
 
 import UIKit
 
-class MMOfflineTableViewCell: UITableViewCell {
+class TableViewCell: UITableViewCell {
 
-    
+  
     @IBOutlet var name: UILabel!
     @IBOutlet var rating: UILabel!
-    @IBOutlet var address: UILabel!
-    @IBOutlet var phone: UILabel!
+    @IBOutlet var phoneNumber: UILabel!
+    @IBOutlet var location: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,5 +27,5 @@ class MMOfflineTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
