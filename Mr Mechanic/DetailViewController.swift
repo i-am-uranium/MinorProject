@@ -62,7 +62,7 @@ class DetailViewController: UIViewController {
     
     func uiAppearence(){
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "simpleImage")!)
         
         title = product.name
         nameLabel.text = title
@@ -72,6 +72,7 @@ class DetailViewController: UIViewController {
         countryLabel.text = product.country
         ratingLabel.text = String(product.rating)
         
+        self.callButton.setTitleColor(UIColor(netHex: 0x800080), forState:UIControlState.Selected)
         self.callButton.layer.borderWidth = 1.0
         self.callButton.layer.borderColor = UIColor(netHex: 0x008000).CGColor
         self.callButton.layer.cornerRadius = 3.0

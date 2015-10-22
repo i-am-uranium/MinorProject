@@ -22,6 +22,7 @@
 		FA1C6E711BD19F300047071D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1C6E701BD19F300047071D /* CoreGraphics.framework */; };
 		FA1C6E731BD19F3B0047071D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1C6E721BD19F3B0047071D /* AudioToolbox.framework */; };
 		FA1C6E751BD19F4B0047071D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1C6E741BD19F4B0047071D /* Accounts.framework */; };
+		FA1EA73F1BD8AB7700540112 /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1EA73E1BD8AB7700540112 /* Interface.swift */; };
 		FA4020A31BD12A82001DF28A /* MMAboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4020A21BD12A82001DF28A /* MMAboutUsTableViewCell.swift */; };
 		FA468B931BD41CCB00368349 /* MMSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA468B921BD41CCA00368349 /* MMSocialViewController.swift */; };
 		FA468B951BD4304700368349 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA468B941BD4304700368349 /* Social.framework */; };
@@ -90,6 +91,7 @@
 		FA1C6E741BD19F4B0047071D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		FA1C6E761BD19F7B0047071D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		FA1C6E771BD19F7B0047071D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		FA1EA73E1BD8AB7700540112 /* Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
 		FA4020A21BD12A82001DF28A /* MMAboutUsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMAboutUsTableViewCell.swift; sourceTree = "<group>"; };
 		FA468B921BD41CCA00368349 /* MMSocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSocialViewController.swift; sourceTree = "<group>"; };
 		FA468B941BD4304700368349 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -259,6 +261,7 @@
 				FA02B1E71BC6FE8C00B7D700 /* ApiModel.swift */,
 				FAA014861BCD9CBB0004E099 /* OfflineApi.swift */,
 				FA468B961BD440C100368349 /* RestApiManager.swift */,
+				FA1EA73E1BD8AB7700540112 /* Interface.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				FAC9C5F41BD14880009B2802 /* MMUITabBarController.swift in Sources */,
 				FA8FD3891BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift in Sources */,
 				FA8FD3871BD61745009C06C4 /* MMMechanicDataModel.swift in Sources */,
+				FA1EA73F1BD8AB7700540112 /* Interface.swift in Sources */,
 				FA468B931BD41CCB00368349 /* MMSocialViewController.swift in Sources */,
 				FA8FD38B1BD61745009C06C4 /* MMOFFlineTViewController.swift in Sources */,
 				FA468B971BD440C100368349 /* RestApiManager.swift in Sources */,

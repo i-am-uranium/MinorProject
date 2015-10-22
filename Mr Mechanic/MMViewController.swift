@@ -10,36 +10,39 @@ import UIKit
 import MapKit
 
 class MMViewController: UIViewController,CLLocationManagerDelegate {
+    
+    // Mark: - Types
+    var locationMgr:CLLocationManager!
     var longitude:Double?
     var lattitude:Double?
     var annotationTitle:String?
     var annotaionSubtitles:String?
     var place:MMOnlineModel?
+    var dataReceived = [MMOnlineModel]()
+    var subTitle:String?
+    let tintColor:UIColor = UIColor(netHex: 0xfa3562)
     
-    
-    @IBOutlet var rectangle: UIImageView!
+    // Mrak: - Properties
     @IBOutlet var mapOutlet: MKMapView!
-    var locationMgr:CLLocationManager!
     @IBOutlet var feedback: UIButton!
     @IBOutlet var myLocation: UIButton!
     @IBOutlet var callButton: UIButton!
     @IBOutlet var direction: UIButton!
-    var nameField = [String]?()
     
+    // Mark: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         mapImplementation()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
-        
-       
-        
+    
     }
-
+   
+    // Mark: - Map Implementation
     func mapImplementation(){
-
             locationMgr = CLLocationManager()
             locationMgr?.delegate = self
             locationMgr?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        
             self.title = place?.name!
             let location = CLLocationCoordinate2DMake((place?.latt!)!, (place?.long!)!)
             let span = MKCoordinateSpanMake(0.01, 0.01)
@@ -50,8 +53,6 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
             annatotion.title = place?.name!
             annatotion.subtitle = place?.address!
             self.mapOutlet.addAnnotation(annatotion)
-            
-    
     }
     
     @IBAction func myLocationAction(sender: AnyObject) {
@@ -59,33 +60,43 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         locationMgr.startUpdatingLocation()
         locationMgr.delegate = self
     }
+    
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        let geoCoder = CLGeocoder()
         let coordinate = newLocation.coordinate
+        
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        geoCoder.reverseGeocodeLocation(location){(placemarks, error) -> Void in
+            
+            if let validPlacemark = placemarks?.first{
+                let placemark = validPlacemark
+                let subLocality = placemark.subLocality
+                let locality = placemark.locality
+                let subAdmin = placemark.subAdministrativeArea
+                let postalCode = placemark.postalCode
+                
+                let sub1 = subLocality! + ","
+                let sub2 = locality! + ","
+                let sub3 = subAdmin! + ","
+                let sub4 = postalCode!
+                self.subTitle = sub1 + sub2 + sub3 +  sub4
+                
+            }
+       }
+        
+        
         let pointAnnotation = MKPointAnnotation()
-        
-        
-        let fromLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        let toLocation = CLLocation(latitude: (place?.latt!)! , longitude: (place?.long!)!)
-        
-        let distance = fromLocation.distanceFromLocation(toLocation)
-        let approxDistance = distance / 1000.0
-        print(approxDistance)
-        
-        
-        
-        
-        
         pointAnnotation.coordinate = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude)
+        pointAnnotation.title = "Your Location is:"
+        pointAnnotation.subtitle = self.subTitle
         let pinAnnotaion = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
+        pinAnnotaion.tintColor = self.tintColor
         self.mapOutlet.centerCoordinate = pointAnnotation.coordinate
         self.mapOutlet.addAnnotation(pinAnnotaion.annotation!)
     }
     
-    
-    
-    
-    // call button function
-    
+
+    // Mark: - Call button function
     @IBAction func callButtonsFunction(sender: AnyObject) {
         let alertController = UIAlertController(title: "Call " + (place?.name!)!, message: "Are you sure you would like to call "  + (place?.name!)! + " ?", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -104,8 +115,7 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    
-    // direction button function
+    // Mark: - Direction button function
     @IBAction func directionButtonsFunction(sender: AnyObject) {
         let la = place?.latt!
         let lo = place?.long!
@@ -113,8 +123,7 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         UIApplication.sharedApplication().openURL(NSURL(string: str)!)
     }
     
-    
-    // to get the rating from the user
+    // Mark: Getting The Rating
    @IBAction func rating(){
         let ratingAlertVIew = UIAlertController(title: "Rate it!", message: "You can give the rating based on your experience", preferredStyle: UIAlertControllerStyle.Alert)
         ratingAlertVIew.addTextFieldWithConfigurationHandler({

@@ -32,7 +32,7 @@ class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewD
         navigationItem.backBarButtonItem = backButton
         tableView.delegate = self
         tableView.dataSource = self
-        let backImage = UIImage(named: "MMimage")
+        let backImage = UIImage(named: "simpleImage")
         self.title = "About Us"
         self.tableView.backgroundColor = UIColor.clearColor()
         self.view.backgroundColor = UIColor(patternImage: backImage!)

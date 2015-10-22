@@ -11,19 +11,28 @@ import MapKit
 
 class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationManagerDelegate {
     
-    @IBOutlet var actInd: UIActivityIndicatorView!
-    let MAXDIS:Double = 20
+    // Mark: - Types
+    let MAX_DIS:Double = 20
+    let NULL = 0
+    let DIV:Double = 1000.0
+    let MUL = 1000
     var lt:Double?
     var ln:Double?
     var locationMgr:CLLocationManager!
-    var distanceInKm = [Double]()
-    var dataPassing = [MMOnlineModel]()
     var dataStoring = [MMOnlineModel]()
     var model:MMOnlineModel?
-    @IBOutlet var tableview: UITableView!
+    var passingModel:MMOnlineModel?
     var timelineData:NSMutableArray = NSMutableArray()
-    var distance = [Double]()
     
+    
+    // Mark: - Properties
+    
+    @IBOutlet var actInd: UIActivityIndicatorView!
+    @IBOutlet var tableview: UITableView!
+
+
+    
+    // Mark: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +48,8 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     override func viewDidAppear(animated: Bool) {
         loadData()
     }
-    override func viewDidLayoutSubviews() {
-        //
-    }
+    
+  
     @IBAction func loadData(){
         timelineData.removeAllObjects()
         let findtimelineData:PFQuery = PFQuery(className:"res")
@@ -52,22 +60,31 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
                 if let objects = objects  {
                     for object in objects {
                         self.timelineData.addObject(object)
+                        let fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
+                        let toLat = object.objectForKey("lat") as? Double
+                        let toLon = object.objectForKey("lon") as? Double
+                        let toLocation = CLLocation(latitude: toLat! , longitude: toLon!)
+                        let distance = fromLocation.distanceFromLocation(toLocation)
+                        let approxDistance = distance / 1000.0
                         
+                        if approxDistance < self.MAX_DIS {
+                            // Mark: - Storing Data
+                            let title = object.objectForKey("name") as? String
+                            let subTitle = object.objectForKey("add") as? String
+                            let latt = object.objectForKey("lat") as? Double
+                            let long = object.objectForKey("lon") as? Double
+                            let phone = object.objectForKey("ph") as? Int
+                            let rating = object.objectForKey("rating") as? Float
+                            let local = object.objectForKey("local") as? String
+                            let city = object.objectForKey("city") as? String
+                            let country = object.objectForKey("contry") as? String
+                            self.model = MMOnlineModel(name: title!, phone: phone!, latt: latt!, long: long!, rating: rating!, address: subTitle!, local: local!, city: city!, country: country!)
+                            self.dataStoring.append(self.model!)
+                            
+                        }else{
                         
-                        // Mark: - Storing Data
-                        
-                        let title = object.objectForKey("name") as? String
-                        let subTitle = object.objectForKey("add") as? String
-                        let latt = object.objectForKey("lat") as? Double
-                        let long = object.objectForKey("lon") as? Double
-                        let phone = object.objectForKey("ph") as? Int
-                        let rating = object.objectForKey("rating") as? Float
-                        let local = object.objectForKey("local") as? String
-                        let city = object.objectForKey("city") as? String
-                        let country = object.objectForKey("contry") as? String
-                        self.model = MMOnlineModel(name: title!, phone: phone!, latt: latt!, long: long!, rating: rating!, address: subTitle!, local: local!, city: city!, country: country!)
-                        
-                        self.dataStoring.append(self.model!)
+                            self.actInd.stopAnimating()
+                        }
                         
                     }
                 }
@@ -77,12 +94,24 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
                 self.tableview.reloadData()
                 
             } else {
+                
+                let alert  = UIAlertController(title: "Oops!", message: "data not available switch to Offline Mode OR hit retry", preferredStyle: UIAlertControllerStyle.Alert)
+                let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel){
+                    UIAlertAction in
+                }
+                alert.addAction(cancel)
+                alert.addAction(UIAlertAction(title: "Retry", style: UIAlertActionStyle.Default){
+                    UIAlertAction in
+                    self.loadData()
+                    
+                    })
+                self.presentViewController(alert, animated: true, completion: nil)
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }
         
     }
-  
+    
     
     
     // Mark: - My location
@@ -99,10 +128,10 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
         let coordinate = newLocation.coordinate
         self.lt = coordinate.latitude
         self.ln = coordinate.longitude
-       
+        
     }
     
-
+    
     
     // MARK: - Table view data source
     
@@ -112,97 +141,62 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timelineData.count
+        return dataStoring.count
     }
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MMOnlineTableViewCell
         
+        // Mark: - Local Types
+        let fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
+        let toLat = self.dataStoring[indexPath.row].latt
+        let toLon = self.dataStoring[indexPath.row].long
+        let toLocation = CLLocation(latitude: toLat! , longitude: toLon!)
+        let distance = fromLocation.distanceFromLocation(toLocation)
+        let approxDistance = distance / DIV
+        let name = dataStoring[indexPath.row].name
+        let phone = dataStoring[(indexPath.row)].phone
+        let rating = dataStoring[indexPath.row].rating
         
-        if self.dataStoring.count != 0 {
-            
-            
-            // Mark: - distance
-            
-                let fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
-                let toLat = self.dataStoring[indexPath.row].latt
-                let toLon = self.dataStoring[indexPath.row].long
-                let toLocation = CLLocation(latitude: toLat! , longitude: toLon!)
-                print(fromLocation)
-                print(toLocation)
-                let distance = fromLocation.distanceFromLocation(toLocation)
-                let approxDistance = distance / 1000.0
-                self.distance.append(approxDistance)
-                print(self.distance)
-                print(approxDistance)
-            
-            
-            if self.distance[indexPath.row] < 12427 {
-            
-                let test = self.dataStoring[indexPath.row].name
-                cell.name.text = test!
-                //cell.address.text = self.dataStoring[indexPath.row].address!
-                cell.phoneNumber.text = String(self.dataStoring[indexPath.row].phone!)
-                cell.rating.text = String(self.dataStoring[indexPath.row].rating!)
-                cell.address.text = "distance From You is: " + String(format: "%.3f", approxDistance)
-                cell.phone.text = "Phone:"
-                cell.star.image = UIImage(named: "star-40")
-                actInd.stopAnimating()
-                return cell
-                
-            }
-            else {
-                actInd.stopAnimating()
-                print("no near by  mechanic shop")
-            }
-            
-           
-        }else{
-            let alert  = UIAlertController(title: "Oops!", message: "data not available switch to Offline Mode OR hit retry", preferredStyle: UIAlertControllerStyle.Alert)
-            let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel){
-                UIAlertAction in
-            }
-            alert.addAction(cancel)
-            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertActionStyle.Default){
-                UIAlertAction in
-                self.loadData()
-                
-                })
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-        }
+        // Mark: - Properties modification
+        cell.name.text = name!
+        cell.phoneNumber.text = String(phone!)
+        cell.rating.text = String(rating!)
+        cell.address.text = "distance From You is: " + String(format: "%.3f", approxDistance) + " Km"
+        cell.phone.text = "Phone:"
+        cell.star.image = UIImage(named: "star-40")
+        actInd.stopAnimating()
         return cell
     }
     
     
     
-    
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    
-    
-    
-
-    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-
-
-
     // MARK: - Navigation
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if segue.identifier == "map"{
             let place = segue.destinationViewController as! MMViewController
-            place.place = self.model
+            let indexPath = self.tableview.indexPathForSelectedRow
+            if dataStoring.count != 0{
+                let name = dataStoring[indexPath!.row].name
+                let phone = dataStoring[(indexPath?.row)!].phone
+                let lat = dataStoring[indexPath!.row].latt
+                let lon = dataStoring[(indexPath?.row)!].long
+                let rating = dataStoring[indexPath!.row].rating
+                let address = dataStoring[(indexPath?.row)!].address
+                let local = dataStoring[indexPath!.row].local
+                let city = dataStoring[indexPath!.row].city
+                let country = dataStoring[(indexPath?.row)!].country
+                let model = MMOnlineModel(name: name!, phone: phone!, latt: lat!, long: lon!, rating: rating!, address: address!, local: local!, city: city!, country: country!)
+                place.place = model
+            }else{
+                print("Something went wrong")
+            }
             
         }
+        
     }
-    
-    
 }
+
+
+

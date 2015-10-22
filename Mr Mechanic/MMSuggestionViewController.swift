@@ -29,7 +29,7 @@ class MMSuggestionViewController: UIViewController,MFMailComposeViewControllerDe
 
         self.title = "Suggestion"
         let color = UIColor(netHex: 0xfa3562).CGColor
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "simpleImage")!)
         self.suggestionField.layer.cornerRadius = 5.0
         self.suggestionField.layer.borderColor = UIColor.grayColor().CGColor
         self.suggestionField.layer.borderWidth = 0.25

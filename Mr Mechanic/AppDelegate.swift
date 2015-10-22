@@ -25,12 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Mark: - UI Tint and Baclground
         
         let tintColor:UIColor = UIColor(netHex: 0x000000)
-        let titleColor:UIColor = UIColor(netHex: 0x212121)
+        let titleColor:UIColor = UIColor(netHex: 0x000000)
         let barTintColor:UIColor = UIColor(netHex: 0xfa3562)
+        UINavigationBar.appearance().barTintColor = UIColor(netHex: 0x3F51B5)
         UINavigationBar.appearance().tintColor = barTintColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: titleColor]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: barTintColor]
         UITabBar.appearance().tintColor = barTintColor
         UILabel.appearance().textColor = tintColor
+        UITabBar.appearance().barTintColor = UIColor(netHex: 0x3F51B5)
         
         
         // Mark: - Offline Implementation
