@@ -4,7 +4,7 @@
 
 /* 
 Abstract:
-The data model object describing the product displayed in both main and results tables.
+The data model object describing the mechanic displayed in both main and results tables.
 */
 
 
@@ -26,9 +26,6 @@ class Mechanic:NSObject,NSCoding{
         case countryKey
     }
     
-    
-    // MARK: Properties
-    
     var name:String
     var phone:Int
     var latt:Double
@@ -38,7 +35,6 @@ class Mechanic:NSObject,NSCoding{
     var local:String
     var city:String
     var country:String
-    
     
     
     // MARK: Initializers
@@ -54,8 +50,6 @@ class Mechanic:NSObject,NSCoding{
         self.city = city
         self.country = country
     }
-    
-    
     
     
     // MARK: NSCoding
@@ -86,9 +80,6 @@ class Mechanic:NSObject,NSCoding{
         aCoder.encodeObject(country, forKey: CoderKeys.nameKey.rawValue)
         
     }
-    
-    
-    
     
     
 }

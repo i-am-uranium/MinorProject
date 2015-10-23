@@ -11,8 +11,9 @@ import MapKit
 
 class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationManagerDelegate {
     
-    // Mark: - Types
-    let MAX_DIS:Double = 20
+    // MARK: - Types
+    
+    let MAX_DIS:Double = 12447
     let NULL = 0
     let DIV:Double = 1000.0
     let MUL = 1000
@@ -22,35 +23,52 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     var dataStoring = [MMOnlineModel]()
     var model:MMOnlineModel?
     var passingModel:MMOnlineModel?
+    let tintColor:UIColor = UIColor(netHex: 0xfa3562)
     var timelineData:NSMutableArray = NSMutableArray()
+    var idArray = [String]()
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        return refreshControl
+        }()
     
     
-    // Mark: - Properties
+    // MARK: - Properties
     
     @IBOutlet var actInd: UIActivityIndicatorView!
     @IBOutlet var tableview: UITableView!
-
-
     
-    // Mark: - View Life Cycle
+    
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backButton
         myLocationAction()
-        actInd.startAnimating()
+        self.tableview.addSubview(self.refreshControl)
+        refreshControl.tintColor = tintColor
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
         self.title = "Mr Mechanic"
         
     }
     
     override func viewDidAppear(animated: Bool) {
-        loadData()
+        self.loadData()
     }
     
-  
+    //MARK: Pull to refresh
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        self.loadData()
+        refreshControl.endRefreshing()
+    }
+    
+    // MARK: Loading of the data from parse
+    
     @IBAction func loadData(){
+        actInd.startAnimating()
         timelineData.removeAllObjects()
         let findtimelineData:PFQuery = PFQuery(className:"res")
         findtimelineData.findObjectsInBackgroundWithBlock {
@@ -68,7 +86,9 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
                         let approxDistance = distance / 1000.0
                         
                         if approxDistance < self.MAX_DIS {
-                            // Mark: - Storing Data
+                            
+                            // MARK: - Storing Data
+                            
                             let title = object.objectForKey("name") as? String
                             let subTitle = object.objectForKey("add") as? String
                             let latt = object.objectForKey("lat") as? Double
@@ -80,9 +100,12 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
                             let country = object.objectForKey("contry") as? String
                             self.model = MMOnlineModel(name: title!, phone: phone!, latt: latt!, long: long!, rating: rating!, address: subTitle!, local: local!, city: city!, country: country!)
                             self.dataStoring.append(self.model!)
+                            let id = object.objectId
+                            self.idArray.append(id!)
+                            
                             
                         }else{
-                        
+                            
                             self.actInd.stopAnimating()
                         }
                         
@@ -114,7 +137,7 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     
     
     
-    // Mark: - My location
+    // MARK: - My location
     
     func myLocationAction() {
         locationMgr = CLLocationManager()
@@ -147,7 +170,7 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MMOnlineTableViewCell
         
-        // Mark: - Local Types
+        // MARK: - Local Types
         let fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
         let toLat = self.dataStoring[indexPath.row].latt
         let toLon = self.dataStoring[indexPath.row].long
@@ -158,7 +181,6 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
         let phone = dataStoring[(indexPath.row)].phone
         let rating = dataStoring[indexPath.row].rating
         
-        // Mark: - Properties modification
         cell.name.text = name!
         cell.phoneNumber.text = String(phone!)
         cell.rating.text = String(rating!)
@@ -189,6 +211,7 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
                 let country = dataStoring[(indexPath?.row)!].country
                 let model = MMOnlineModel(name: name!, phone: phone!, latt: lat!, long: lon!, rating: rating!, address: address!, local: local!, city: city!, country: country!)
                 place.place = model
+                place.idString = self.idArray[indexPath!.row]
             }else{
                 print("Something went wrong")
             }

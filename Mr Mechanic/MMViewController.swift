@@ -5,13 +5,16 @@
 //  Created by Ravi Ranjan on 08/10/15.
 //  Copyright © 2015 Ravi Ranjan. All rights reserved.
 //
-
+import Foundation
 import UIKit
 import MapKit
 
 class MMViewController: UIViewController,CLLocationManagerDelegate {
     
     // Mark: - Types
+    let EXPONENTIAL_POWER:Double = 0.2
+    var userRating:Float?
+    var idString:String?
     var locationMgr:CLLocationManager!
     var longitude:Double?
     var lattitude:Double?
@@ -34,25 +37,51 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
         mapImplementation()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
-    
+        
     }
-   
+    
+    override func viewDidAppear(animated: Bool) {
+        animateLeft(myLocation)
+        animateRight(feedback)
+        animateLeft(direction)
+        animateRight(callButton)
+    }
+    
+    
+    
+    // MARK: - Button aniamtions
+    func animateLeft(button:UIButton){
+        let rotate = CABasicAnimation(keyPath:"transform.rotation")
+        rotate.byValue = -(M_PI*2)
+        rotate.duration = 3.0
+        rotate.timingFunction = CAMediaTimingFunction (name:kCAMediaTimingFunctionEaseInEaseOut)
+        button.layer.addAnimation(rotate, forKey: "myRotationAnimation")
+    }
+    func animateRight(button:UIButton){
+        let rotate = CABasicAnimation(keyPath:"transform.rotation")
+        rotate.byValue = (M_PI*2)
+        rotate.duration = 3.0
+        rotate.timingFunction = CAMediaTimingFunction (name:kCAMediaTimingFunctionEaseInEaseOut)
+        button.layer.addAnimation(rotate, forKey: "myRotationAnimation")
+    }
+    
+    
+    
     // Mark: - Map Implementation
     func mapImplementation(){
-            locationMgr = CLLocationManager()
-            locationMgr?.delegate = self
-            locationMgr?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        
-            self.title = place?.name!
-            let location = CLLocationCoordinate2DMake((place?.latt!)!, (place?.long!)!)
-            let span = MKCoordinateSpanMake(0.01, 0.01)
-            let region = MKCoordinateRegionMake(location, span)
-            self.mapOutlet.setRegion(region, animated: true)
-            let annatotion = MKPointAnnotation()
-            annatotion.coordinate = location
-            annatotion.title = place?.name!
-            annatotion.subtitle = place?.address!
-            self.mapOutlet.addAnnotation(annatotion)
+        locationMgr = CLLocationManager()
+        locationMgr?.delegate = self
+        locationMgr?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        self.title = place?.name!
+        let location = CLLocationCoordinate2DMake((place?.latt!)!, (place?.long!)!)
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegionMake(location, span)
+        self.mapOutlet.setRegion(region, animated: true)
+        let annatotion = MKPointAnnotation()
+        annatotion.coordinate = location
+        annatotion.title = place?.name!
+        annatotion.subtitle = place?.address!
+        self.mapOutlet.addAnnotation(annatotion)
     }
     
     @IBAction func myLocationAction(sender: AnyObject) {
@@ -69,25 +98,30 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         geoCoder.reverseGeocodeLocation(location){(placemarks, error) -> Void in
             
             if let validPlacemark = placemarks?.first{
+               
                 let placemark = validPlacemark
                 let subLocality = placemark.subLocality
                 let locality = placemark.locality
-                let subAdmin = placemark.subAdministrativeArea
+                let subAdmin = placemark.administrativeArea
                 let postalCode = placemark.postalCode
                 
-                let sub1 = subLocality! + ","
-                let sub2 = locality! + ","
-                let sub3 = subAdmin! + ","
-                let sub4 = postalCode!
-                self.subTitle = sub1 + sub2 + sub3 +  sub4
+                if subLocality == nil || locality == nil || subAdmin == nil || postalCode == nil{
+                    self.subTitle = " "
+                }else{
+                    let sub1 = subLocality! + ","
+                    let sub2 = locality! + ","
+                    let sub3 = subAdmin! + ","
+                    let sub4 = postalCode!
+                    self.subTitle = sub1 + sub2 + sub3 +  sub4
+                }
                 
             }
-       }
+        }
         
         
         let pointAnnotation = MKPointAnnotation()
         pointAnnotation.coordinate = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude)
-        pointAnnotation.title = "Your Location is:"
+        pointAnnotation.title = "You're here"
         pointAnnotation.subtitle = self.subTitle
         let pinAnnotaion = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
         pinAnnotaion.tintColor = self.tintColor
@@ -95,7 +129,7 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         self.mapOutlet.addAnnotation(pinAnnotaion.annotation!)
     }
     
-
+    
     // Mark: - Call button function
     @IBAction func callButtonsFunction(sender: AnyObject) {
         let alertController = UIAlertController(title: "Call " + (place?.name!)!, message: "Are you sure you would like to call "  + (place?.name!)! + " ?", preferredStyle: UIAlertControllerStyle.Alert)
@@ -123,8 +157,8 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         UIApplication.sharedApplication().openURL(NSURL(string: str)!)
     }
     
-    // Mark: Getting The Rating
-   @IBAction func rating(){
+    // Mark: Updating The Rating
+    @IBAction func rating(){
         let ratingAlertVIew = UIAlertController(title: "Rate it!", message: "You can give the rating based on your experience", preferredStyle: UIAlertControllerStyle.Alert)
         ratingAlertVIew.addTextFieldWithConfigurationHandler({
             textField in
@@ -134,27 +168,59 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         })
         ratingAlertVIew.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
         ratingAlertVIew.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {
-        alertAction in
+            alertAction in
             let rate:NSArray = NSArray(array: ratingAlertVIew.textFields!)
             let rating = rate.objectAtIndex(0) as! UITextField
-            let str = rating.text
-            print(str!)
+            let reviewRating = Float(rating.text!)
+            self.updatingRatings(reviewRating!)
             
         }))
-    
+        
         self.presentViewController(ratingAlertVIew, animated: true, completion: nil)
     }
-
-
     
+    func updatingRatings(reviewRating:Float){
+        
+        let priviousRating = self.place!.rating
+        print(priviousRating)
+        if reviewRating < 10 {
+            userRating = (reviewRating + priviousRating!) / 2
+            self.updatingRatingToParse(userRating!)
+            
+        }
+        else if reviewRating < 100 {
+            self.userRating = (reviewRating + priviousRating!) / 20
+            self.updatingRatingToParse(userRating!)
+        }else{
+            self.updatingRatingToParse(5.0)
+            
+        }
+        
+    }
+    
+    
+    func updatingRatingToParse(rating:Float){
+        
+        let roundedRating = round(rating)
+        let query = PFQuery(className:"res")
+        query.getObjectInBackgroundWithId(self.idString!) {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let ratObject = object {
+                ratObject["rating"] = roundedRating
+                ratObject.saveInBackground()
+            }
+        }
+    }
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

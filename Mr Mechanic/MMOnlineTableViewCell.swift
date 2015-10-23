@@ -10,29 +10,22 @@ import UIKit
 
 class MMOnlineTableViewCell: UITableViewCell {
 
+    // MARK: - Properties
+    
     @IBOutlet var name: UILabel!
-    
     @IBOutlet var address: UILabel!
-    
-    
     @IBOutlet var rating: UILabel!
-    
-   
     @IBOutlet var phoneNumber: UILabel!
-    
     @IBOutlet var phone: UILabel!
-    
     @IBOutlet var star: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }
