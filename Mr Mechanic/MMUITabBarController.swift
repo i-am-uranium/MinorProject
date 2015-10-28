@@ -12,12 +12,14 @@ class MMUITabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.layer.borderWidth = 1.0
+        self.view.layer.borderColor = UIColor(netHex: 0x3F51B5).CGColor
 
-        let view = UIView(frame:
-            CGRect(x: 0.0, y: 0.0, width: UIScreen.mainScreen().bounds.size.width, height: 20.0)
-        )
-        view.backgroundColor = UIColor(netHex: 0x3F51B5)
-        self.view.addSubview(view)
+//        let view = UIView(frame:
+//            CGRect(x: 0.0, y: 0.0, width: UIScreen.mainScreen().bounds.size.width, height: 20.0)
+//        )
+//        view.backgroundColor = UIColor(netHex: 0x3F51B5)
+//        self.view.addSubview(view)
         
     }
 

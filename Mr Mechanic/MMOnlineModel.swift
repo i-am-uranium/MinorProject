@@ -33,4 +33,5 @@ class MMOnlineModel{
         self.city = city
         self.country = country
     }
+    
 }

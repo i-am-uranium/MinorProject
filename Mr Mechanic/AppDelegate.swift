@@ -8,19 +8,19 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var lt:Double?
+    var ln:Double?
     var offlineArray = [Mechanic]()
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         Parse.setApplicationId("HEJmj368db3vjcSG4u2kGkgDkPZvohy7XNQXLOnX",
             clientKey: "fKyQg8bEXrdoOdsv58FV45QzAgqTagWBFtcA3rIU")
-        
-        
         
         // Mark: - UI Tint and Background
         
@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = barTintColor
         UILabel.appearance().textColor = tintColor
         UITabBar.appearance().barTintColor = UIColor(netHex: 0x3F51B5)
-        
         
         // Mark: - Offline Implementation
         
@@ -73,17 +72,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Invalid filename/path.")
         }
         
-        
         let tabController = window!.rootViewController as! UITabBarController
         tabController.selectedIndex = 1
         let navController = tabController.viewControllers!.first as! UINavigationController
         let tableViewController = navController.viewControllers.first as! MainTableViewController
-        tableViewController.products = offlineArray
+        tableViewController.mechanic = offlineArray
         
-   
         return true
     }
-
     
     
     func application(application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
@@ -96,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         return true
     }
+
 
 
 }

@@ -10,9 +10,9 @@ import UIKit
 import Social
 
 class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+   
+    var alert = AlertAndAnimation()
     @IBOutlet var tableView: UITableView!
-    
-
     @IBOutlet var suggestion: UIButton!
     let socialLabNadImg = [("SocialIcon1","Facebook","http://www.facebook.com"),
         ("SocialIcon2","Twitter","http://www.twitter.com"),
@@ -37,7 +37,7 @@ class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewD
         self.tableView.backgroundColor = UIColor.clearColor()
         self.view.backgroundColor = UIColor(patternImage: backImage!)
         self.suggestion.layer.borderWidth = 1.0
-        self.suggestion.layer.borderColor = UIColor(netHex: 0xfa3562).CGColor
+        self.suggestion.layer.borderColor = UIColor(netHex: 0x3F51B5).CGColor
         self.suggestion.layer.cornerRadius = 3.0
     }
     
@@ -75,11 +75,7 @@ class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewD
         return cell
     }
 
-    
-    
-    
-    
-  
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -94,55 +90,5 @@ class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewD
             
         }
     }
-
     
-    
-    
-    // Mark: - Social Link Integration
-    
-    
-    // Facebook integration
-    @IBAction func facebook(sender: AnyObject) {
-        //check if the facebok service is availble
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)
-        {
-            //if the facebook service is available then find the VIEW
-            let facebookSheet : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            // add constraints o the view
-            facebookSheet.setInitialText("Chekc This Awesome App Download From App Store" )
-            // represrent the view
-            self.presentViewController(facebookSheet, animated: true, completion: nil)
-            
-        }else{
-            let alert = UIAlertController(title: "Acounts", message: "Please log in to your acount in your settings ", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-        }
-        
-        
-    }
-    
-    // twitter integration
-    @IBAction func twitter(sender: AnyObject) {
-        
-        //check if the twitter service is availble
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter)
-        {
-            //if the facebook service is available then find the VIEW
-            let twitterSheet : SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            // add constraints o the view
-            twitterSheet.setInitialText("Chekc This Awesome App Download From App Store")
-                        // represrent the view
-            self.presentViewController(twitterSheet, animated: true, completion: nil)
-            
-        }else{
-            // create an alert
-            let alert = UIAlertController(title: "Acounts", message: "Please log in to your acount in your settings ", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-        }
-    
-    }
 }

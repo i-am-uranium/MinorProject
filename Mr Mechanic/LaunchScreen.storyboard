@@ -4,11 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="Avenir.ttc">
-            <string>Avenir-Heavy</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tv7-bQ-DdO">
@@ -30,32 +25,19 @@
                                 <rect key="frame" x="164" y="275" width="266" height="50"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="43"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2015 Ravi Ranjan. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faf-ic-u6x" userLabel="Copyright © 2015 Ravi Ranjan. All rights reserved.">
-                                <rect key="frame" x="20" y="550" width="560" height="24"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="1hj-mc-CUI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.9938018918" green="0.26147593139999997" blue="0.3827813068" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qTm-3n-Y6e" firstAttribute="leading" secondItem="Crd-63-ErX" secondAttribute="leading" id="48J-al-rDt"/>
-                            <constraint firstItem="Qt2-3N-Esy" firstAttribute="centerY" secondItem="Crd-63-ErX" secondAttribute="centerY" id="Ftg-Qx-sLg"/>
-                            <constraint firstItem="faf-ic-u6x" firstAttribute="trailing" secondItem="Crd-63-ErX" secondAttribute="trailingMargin" id="I9a-Ev-sgV"/>
-                            <constraint firstItem="faf-ic-u6x" firstAttribute="leading" secondItem="Crd-63-ErX" secondAttribute="leadingMargin" id="Qjn-3G-LCS"/>
-                            <constraint firstItem="faf-ic-u6x" firstAttribute="top" secondItem="qTm-3n-Y6e" secondAttribute="bottom" constant="8" symbolic="YES" id="XNE-Sy-Sfb"/>
-                            <constraint firstItem="qTm-3n-Y6e" firstAttribute="top" secondItem="Crd-63-ErX" secondAttribute="top" id="dEa-ov-bhX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qTm-3n-Y6e" secondAttribute="trailing" constant="-15" id="feg-Tg-NfE"/>
-                            <constraint firstItem="qTm-3n-Y6e" firstAttribute="centerX" secondItem="Qt2-3N-Esy" secondAttribute="centerX" id="tJu-yl-H2j"/>
-                            <constraint firstItem="WGW-R6-Ik6" firstAttribute="top" secondItem="faf-ic-u6x" secondAttribute="bottom" constant="26" id="uah-6J-ZBq"/>
+                            <constraint firstItem="Qt2-3N-Esy" firstAttribute="centerX" secondItem="qTm-3n-Y6e" secondAttribute="centerX" id="9l6-1L-aQU"/>
+                            <constraint firstItem="qTm-3n-Y6e" firstAttribute="leading" secondItem="Crd-63-ErX" secondAttribute="leadingMargin" constant="-20" id="TBR-49-hOQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qTm-3n-Y6e" secondAttribute="trailing" constant="-15" id="TRL-Iv-tL8"/>
+                            <constraint firstItem="qTm-3n-Y6e" firstAttribute="top" secondItem="Crd-63-ErX" secondAttribute="topMargin" id="XBe-O6-Rcu"/>
+                            <constraint firstItem="Qt2-3N-Esy" firstAttribute="centerY" secondItem="Crd-63-ErX" secondAttribute="centerY" id="k5j-f2-2vi"/>
+                            <constraint firstItem="WGW-R6-Ik6" firstAttribute="top" secondItem="qTm-3n-Y6e" secondAttribute="bottom" constant="58" id="xDa-1m-2Ja"/>
                         </constraints>
                     </view>
                 </viewController>

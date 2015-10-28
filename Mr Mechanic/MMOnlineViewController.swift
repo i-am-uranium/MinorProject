@@ -19,22 +19,24 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     let MUL = 1000
     var lt:Double?
     var ln:Double?
+    var fromLocation:CLLocation?
+    
+
+    
+    
+    
+    // MARK: - Properties
     var locationMgr:CLLocationManager!
     var dataStoring = [MMOnlineModel]()
     var model:MMOnlineModel?
     var passingModel:MMOnlineModel?
     let tintColor:UIColor = UIColor(netHex: 0xfa3562)
-    var timelineData:NSMutableArray = NSMutableArray()
     var idArray = [String]()
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         return refreshControl
         }()
-    
-    
-    // MARK: - Properties
-    
     @IBOutlet var actInd: UIActivityIndicatorView!
     @IBOutlet var tableview: UITableView!
     
@@ -44,19 +46,21 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myLocationAction()
+        loadData()
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backButton
-        myLocationAction()
         self.tableview.addSubview(self.refreshControl)
         refreshControl.tintColor = tintColor
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
         self.title = "Mr Mechanic"
-        
     }
     
+    
     override func viewDidAppear(animated: Bool) {
-        self.loadData()
+       self.loadData()
     }
+   
     
     //MARK: Pull to refresh
     
@@ -69,7 +73,7 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     
     @IBAction func loadData(){
         actInd.startAnimating()
-        timelineData.removeAllObjects()
+        dataStoring.removeAll()
         let findtimelineData:PFQuery = PFQuery(className:"res")
         findtimelineData.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -77,12 +81,17 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
             if error == nil {
                 if let objects = objects  {
                     for object in objects {
-                        self.timelineData.addObject(object)
-                        let fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
+                        if self.fromLocation == nil{
+                            self.lt = 0.000000
+                            self.ln = 0.000000
+                        self.fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
+                        }else{
+                        self.fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
+                        }
                         let toLat = object.objectForKey("lat") as? Double
                         let toLon = object.objectForKey("lon") as? Double
                         let toLocation = CLLocation(latitude: toLat! , longitude: toLon!)
-                        let distance = fromLocation.distanceFromLocation(toLocation)
+                        let distance = self.fromLocation!.distanceFromLocation(toLocation)
                         let approxDistance = distance / 1000.0
                         
                         if approxDistance < self.MAX_DIS {
@@ -102,6 +111,7 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
                             self.dataStoring.append(self.model!)
                             let id = object.objectId
                             self.idArray.append(id!)
+                            self.actInd.stopAnimating()
                             
                             
                         }else{
@@ -111,9 +121,6 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
                         
                     }
                 }
-                
-                let array:NSArray = self.timelineData.reverseObjectEnumerator().allObjects
-                self.timelineData = NSMutableArray(array:array)
                 self.tableview.reloadData()
                 
             } else {
@@ -136,7 +143,6 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     }
     
     
-    
     // MARK: - My location
     
     func myLocationAction() {
@@ -145,16 +151,50 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
         locationMgr?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationMgr.requestWhenInUseAuthorization()
         locationMgr.startUpdatingLocation()
-        locationMgr.delegate = self
     }
+    
+    
+    
+//
+//    func locationManager(manager: CLLocationManager,
+//        didChangeAuthorizationStatus status: CLAuthorizationStatus)
+//    {
+//        switch CLLocationManager.authorizationStatus() {
+//        case .Authorized:
+//            locationMgr.startUpdatingLocation()
+//            // ...
+//        case .AuthorizedWhenInUse, .Restricted, .Denied:
+//            locationMgr.requestWhenInUseAuthorization()
+//            let alertController = UIAlertController(
+//                title: "Background Location Access Disabled",
+//                message: "In order to be notified about adorable kittens near you, please open this app's settings and set location access to 'Always'.",
+//                preferredStyle: .Alert)
+//            
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//            alertController.addAction(cancelAction)
+//            
+//            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+//                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+//                    UIApplication.sharedApplication().openURL(url)
+//                }
+//            }
+//            alertController.addAction(openAction)
+//            
+//            self.presentViewController(alertController, animated: true, completion: nil)
+//        default:break
+//        }
+//    }
+//    
+    
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         let coordinate = newLocation.coordinate
         self.lt = coordinate.latitude
         self.ln = coordinate.longitude
-        
+     
     }
     
-    
+
+
     
     // MARK: - Table view data source
     
@@ -171,23 +211,27 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MMOnlineTableViewCell
         
         // MARK: - Local Types
-        let fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
-        let toLat = self.dataStoring[indexPath.row].latt
-        let toLon = self.dataStoring[indexPath.row].long
-        let toLocation = CLLocation(latitude: toLat! , longitude: toLon!)
-        let distance = fromLocation.distanceFromLocation(toLocation)
-        let approxDistance = distance / DIV
-        let name = dataStoring[indexPath.row].name
-        let phone = dataStoring[(indexPath.row)].phone
-        let rating = dataStoring[indexPath.row].rating
         
-        cell.name.text = name!
-        cell.phoneNumber.text = String(phone!)
-        cell.rating.text = String(rating!)
-        cell.address.text = "distance From You is: " + String(format: "%.3f", approxDistance) + " Km"
-        cell.phone.text = "Phone:"
-        cell.star.image = UIImage(named: "star-40")
-        actInd.stopAnimating()
+        
+        if self.dataStoring.count != 0{
+            let fromLocation = CLLocation(latitude: self.lt!, longitude: self.ln!)
+            let toLat = self.dataStoring[indexPath.row].latt
+            let toLon = self.dataStoring[indexPath.row].long
+            let toLocation = CLLocation(latitude: toLat! , longitude: toLon!)
+            let distance = fromLocation.distanceFromLocation(toLocation)
+            let approxDistance = distance / DIV
+            let name = dataStoring[indexPath.row].name
+            let phone = dataStoring[(indexPath.row)].phone
+            let rating = dataStoring[indexPath.row].rating
+            
+            cell.name.text = name!
+            cell.phoneNumber.text = String(phone!)
+            cell.rating.text = String(rating!)
+            cell.address.text = "distance From You is: " + String(format: "%.3f", approxDistance) + " Km"
+            cell.phone.text = "Phone:"
+            cell.star.image = UIImage(named: "star-40")
+            actInd.stopAnimating()
+        }
         return cell
     }
     

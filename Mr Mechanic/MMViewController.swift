@@ -26,6 +26,7 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
     let tintColor:UIColor = UIColor(netHex: 0xfa3562)
     
     // Mrak: - Properties
+    var animation = AlertAndAnimation()
     @IBOutlet var mapOutlet: MKMapView!
     @IBOutlet var feedback: UIButton!
     @IBOutlet var myLocation: UIButton!
@@ -41,28 +42,11 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        animateLeft(myLocation)
-        animateRight(feedback)
-        animateLeft(direction)
-        animateRight(callButton)
-    }
-    
-    
-    
-    // MARK: - Button aniamtions
-    func animateLeft(button:UIButton){
-        let rotate = CABasicAnimation(keyPath:"transform.rotation")
-        rotate.byValue = -(M_PI*2)
-        rotate.duration = 3.0
-        rotate.timingFunction = CAMediaTimingFunction (name:kCAMediaTimingFunctionEaseInEaseOut)
-        button.layer.addAnimation(rotate, forKey: "myRotationAnimation")
-    }
-    func animateRight(button:UIButton){
-        let rotate = CABasicAnimation(keyPath:"transform.rotation")
-        rotate.byValue = (M_PI*2)
-        rotate.duration = 3.0
-        rotate.timingFunction = CAMediaTimingFunction (name:kCAMediaTimingFunctionEaseInEaseOut)
-        button.layer.addAnimation(rotate, forKey: "myRotationAnimation")
+        animation.animateLeft(myLocation)
+        animation.animateRight(feedback)
+        animation.animateLeft(direction)
+        animation.animateRight(callButton)
+
     }
     
     
@@ -74,6 +58,7 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         locationMgr?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.title = place?.name!
         let location = CLLocationCoordinate2DMake((place?.latt!)!, (place?.long!)!)
+        print(location)
         let span = MKCoordinateSpanMake(0.01, 0.01)
         let region = MKCoordinateRegionMake(location, span)
         self.mapOutlet.setRegion(region, animated: true)
@@ -213,6 +198,8 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
             }
         }
     }
+    
+    
     /*
     // MARK: - Navigation
     

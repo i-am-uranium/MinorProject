@@ -31,9 +31,6 @@ class DetailViewController: UIViewController {
     @IBOutlet var countryLabel: UILabel!
     @IBOutlet var ratingLabel: UILabel!
     @IBOutlet var callButton: UIButton!
-   
-    
-    
     var product: Mechanic!
     
     
@@ -58,7 +55,7 @@ class DetailViewController: UIViewController {
     }
     
     
-    // Mrak:- UIAppereance
+    // MARK:- UIAppereance
     
     func uiAppearence(){
         
@@ -71,7 +68,6 @@ class DetailViewController: UIViewController {
         cityLabel.text = product.city
         countryLabel.text = product.country
         ratingLabel.text = String(product.rating)
-        
         self.callButton.setTitleColor(UIColor(netHex: 0x800080), forState:UIControlState.Selected)
         self.callButton.layer.borderWidth = 1.0
         self.callButton.layer.borderColor = UIColor(netHex: 0x008000).CGColor
@@ -81,21 +77,17 @@ class DetailViewController: UIViewController {
     
     
     
-    // Mark: - Call button action
-    
+    // MARK: - Call button action
     
     @IBAction func callButtonsFunction(sender: AnyObject) {
         let name = product.name
         let phone = product.phone
         let alertController = UIAlertController(title: "Call " + name, message: "Are you sure you would like to call "  + name + " ?", preferredStyle: UIAlertControllerStyle.Alert)
-        
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default){
             UIAlertAction in
-            //this how we can make call from the app
             let url : NSURL = NSURL(string: "tel://" + String(phone))!
             UIApplication.sharedApplication().openURL(url)
         }
-        
         let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel){
             UIAlertAction in
         }
@@ -110,19 +102,19 @@ class DetailViewController: UIViewController {
     override func encodeRestorableStateWithCoder(coder: NSCoder) {
         super.encodeRestorableStateWithCoder(coder)
         
-        // Encode the product.
+        // Encode the mechanicdata.
         coder.encodeObject(product, forKey: DetailViewController.restoreProduct)
     }
     
     override func decodeRestorableStateWithCoder(coder: NSCoder) {
         super.decodeRestorableStateWithCoder(coder)
         
-        // Restore the product.
+        // Restore the mechanicdata.
         if let decodedProduct = coder.decodeObjectForKey(DetailViewController.restoreProduct) as? Mechanic {
             product = decodedProduct
         }
         else {
-            fatalError("A mechanicProduct did not exist. In your app, handle this gracefully.")
+            fatalError("A mechanicdata did not exist. In your app, handle this gracefully.")
         }
     }
 }

@@ -8,7 +8,7 @@
 
 /*
 Abstract:
-The application's primary table view controller showing a list of products.
+The application's primary table view controller showing a list of mechanic.
 */
 
 import UIKit
@@ -32,8 +32,8 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
     // MARK: Properties
     
     /// Data model for the table view.
-    var products = [Mechanic]()
-    
+    var mechanic = [Mechanic]()
+    let tintColor = UIColor(netHex: 0xfa3562)
     
     /*
     The following 2 properties are set in viewDidLoad(),
@@ -56,22 +56,18 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backButton
-        
-        
         resultsTableController = ResultsTableController()
-        
+
         // We want to be the delegate for our filtered table so didSelectRowAtIndexPath(_:) is called for both tables.
         resultsTableController.tableView.delegate = self
-        
         searchController = UISearchController(searchResultsController: resultsTableController)
         searchController.searchResultsUpdater = self
         searchController.searchBar.sizeToFit()
         tableView.tableHeaderView = searchController.searchBar
-        
+        tableView.tableHeaderView?.backgroundColor = tintColor
         searchController.delegate = self
         searchController.dimsBackgroundDuringPresentation = false // default is YES
         searchController.searchBar.delegate = self    // so we can monitor text changes + others
@@ -102,8 +98,6 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
     // MARK: UISearchBarDelegate
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchBar.keyboardType = UIKeyboardType.NamePhonePad
-        searchBar.placeholder = "Enter your approximate location"
         searchBar.resignFirstResponder()
     }
     
@@ -135,37 +129,21 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         // Update the filtered array based on the search text.
-        let searchResults = products
+        let searchResults = mechanic
         
         // Strip out all the leading and trailing spaces.
         let whitespaceCharacterSet = NSCharacterSet.whitespaceCharacterSet()
         let strippedString = searchController.searchBar.text!.stringByTrimmingCharactersInSet(whitespaceCharacterSet)
         let searchItems = strippedString.componentsSeparatedByString(" ") as [String]
         
-        
-        
-        
-        
-        
         // Build all the "AND" expressions for each value in the searchString.
         let andMatchPredicates: [NSPredicate] = searchItems.map { searchString in
-            // Each searchString creates an OR predicate for: name, yearIntroduced, introPrice.
-            //
-            // Example if searchItems contains "iphone 599 2007":
-            //      name CONTAINS[c] "iphone"
-            //      name CONTAINS[c] "599", yearIntroduced ==[c] 599, introPrice ==[c] 599
-            //      name CONTAINS[c] "2007", yearIntroduced ==[c] 2007, introPrice ==[c] 2007
-            //
             var searchItemsPredicate = [NSPredicate]()
-            
-            // Below we use NSExpression represent expressions in our predicates.
-            // NSPredicate is made up of smaller, atomic parts: two NSExpressions (a left-hand value and a right-hand value).
-            
             // Name field matching.
-            let titleExpression = NSExpression(forKeyPath: "local")
+            let addressExpression = NSExpression(forKeyPath: "address")
             let searchStringExpression = NSExpression(forConstantValue: searchString)
             
-            let titleSearchComparisonPredicate = NSComparisonPredicate(leftExpression: titleExpression, rightExpression: searchStringExpression, modifier: .DirectPredicateModifier, type: .ContainsPredicateOperatorType, options: .CaseInsensitivePredicateOption)
+            let titleSearchComparisonPredicate = NSComparisonPredicate(leftExpression: addressExpression, rightExpression: searchStringExpression, modifier: .DirectPredicateModifier, type: .ContainsPredicateOperatorType, options: .CaseInsensitivePredicateOption)
             
             searchItemsPredicate.append(titleSearchComparisonPredicate)
             
@@ -180,15 +158,14 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
                 // Use `targetNumberExpression` in both the following predicates.
                 let targetNumberExpression = NSExpression(forConstantValue: targetNumber!)
                 
-                // `city` field matching.
-                let cityExpression = NSExpression(forKeyPath: "city")
-                let cityPredicate = NSComparisonPredicate(leftExpression: cityExpression, rightExpression: targetNumberExpression, modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: .CaseInsensitivePredicateOption)
+                // `rating` field matching.
+                let cityExpression = NSExpression(forKeyPath: "rating")
+                let ratingPredicate = NSComparisonPredicate(leftExpression: cityExpression, rightExpression: targetNumberExpression, modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: .CaseInsensitivePredicateOption)
+            
+                searchItemsPredicate.append(ratingPredicate)
                 
-                searchItemsPredicate.append(cityPredicate)
-                
-                // TODO: renaming
-                // `address` field matching.
-                let lhs = NSExpression(forKeyPath: "address")
+                // `phone number` field matching.
+                let lhs = NSExpression(forKeyPath: "phone")
                 
                 let finalPredicate = NSComparisonPredicate(leftExpression: lhs, rightExpression: targetNumberExpression, modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: .CaseInsensitivePredicateOption)
                 
@@ -197,7 +174,6 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
             
             // Add this OR predicate to our master AND predicate.
             let orMatchPredicate = NSCompoundPredicate(orPredicateWithSubpredicates:searchItemsPredicate)
-            
             return orMatchPredicate
         }
         
@@ -215,13 +191,13 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
     // MARK: UITableViewDataSource
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
+        return mechanic.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(BaseTableViewController.tableViewCellIdentifier, forIndexPath: indexPath) as! TableViewCell
         
-        let product = products[indexPath.row]
+        let product = mechanic[indexPath.row]
         configureCell(cell, forProduct: product)
         
         return cell
@@ -232,7 +208,7 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
         
         // Check to see which table view cell was selected.
         if tableView === self.tableView {
-            selectedProduct = products[indexPath.row]
+            selectedProduct = mechanic[indexPath.row]
         }
         else {
             selectedProduct = resultsTableController.filteredMechanic[indexPath.row]

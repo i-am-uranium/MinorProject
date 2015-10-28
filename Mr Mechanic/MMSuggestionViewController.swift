@@ -28,7 +28,6 @@ class MMSuggestionViewController: UIViewController,MFMailComposeViewControllerDe
     func boarderAddingTofields(){
 
         self.title = "Suggestion"
-        let color = UIColor(netHex: 0xfa3562).CGColor
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "simpleImage")!)
         self.suggestionField.layer.cornerRadius = 5.0
         self.suggestionField.layer.borderColor = UIColor.grayColor().CGColor
@@ -42,7 +41,7 @@ class MMSuggestionViewController: UIViewController,MFMailComposeViewControllerDe
         self.emailField.backgroundColor = UIColor.clearColor()
         self.sendSuggestion.layer.cornerRadius = 3.0
         self.sendSuggestion.layer.borderWidth = 1.0
-        self.sendSuggestion.layer.borderColor = color
+        self.sendSuggestion.layer.borderColor = UIColor(netHex: 0x3F51B5).CGColor
         
     }
 
