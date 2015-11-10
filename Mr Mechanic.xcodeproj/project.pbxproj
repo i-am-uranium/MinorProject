@@ -175,6 +175,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA17A4501BEBC4C400EF3682 /* Other File */ = {
+			isa = PBXGroup;
+			children = (
+				FA4F5FA11BDE6A46005B561B /* MMAboutAppViewController.swift */,
+				FA5C9E501BDAA50000F88760 /* TestTableViewController.swift */,
+				FA4F5FA31BDE758C005B561B /* MMAlert.swift */,
+			);
+			name = "Other File";
+			sourceTree = "<group>";
+		};
+		FA17A4511BEBC50400EF3682 /* Helping Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA8C9F011BC59F3D00A81384 /* Main.storyboard */,
+				FA8FD3841BD61745009C06C4 /* TableViewCell.xib */,
+				FA8C9F041BC59F3D00A81384 /* Assets.xcassets */,
+				FA8C9F091BC59F3D00A81384 /* Info.plist */,
+				FAFCAEBF1BD96690009526DA /* LaunchScreen.storyboard */,
+			);
+			name = "Helping Files";
+			sourceTree = "<group>";
+		};
 		FA8C9EF11BC59F3D00A81384 = {
 			isa = PBXGroup;
 			children = (
@@ -207,14 +229,8 @@
 				FA914F401BC5B35B00539A20 /* Model */,
 				FA8C9F2B1BC59F4B00A81384 /* Extensions */,
 				FAAF5EB41BCE270F001C2B4C /* assets */,
-				FA8C9F011BC59F3D00A81384 /* Main.storyboard */,
-				FA4F5FA11BDE6A46005B561B /* MMAboutAppViewController.swift */,
-				FA8FD3841BD61745009C06C4 /* TableViewCell.xib */,
-				FA8C9F041BC59F3D00A81384 /* Assets.xcassets */,
-				FA8C9F091BC59F3D00A81384 /* Info.plist */,
-				FAFCAEBF1BD96690009526DA /* LaunchScreen.storyboard */,
-				FA5C9E501BDAA50000F88760 /* TestTableViewController.swift */,
-				FA4F5FA31BDE758C005B561B /* MMAlert.swift */,
+				FA17A4511BEBC50400EF3682 /* Helping Files */,
+				FA17A4501BEBC4C400EF3682 /* Other File */,
 			);
 			path = "Mr Mechanic";
 			sourceTree = "<group>";

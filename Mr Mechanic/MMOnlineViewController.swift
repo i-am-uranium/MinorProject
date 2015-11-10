@@ -23,8 +23,6 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     
 
     
-    
-    
     // MARK: - Properties
     var locationMgr:CLLocationManager!
     var dataStoring = [MMOnlineModel]()

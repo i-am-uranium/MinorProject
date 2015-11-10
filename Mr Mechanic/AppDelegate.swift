@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let tabController = window!.rootViewController as! UITabBarController
-        tabController.selectedIndex = 1
+        tabController.selectedIndex = 2
         let navController = tabController.viewControllers!.first as! UINavigationController
         let tableViewController = navController.viewControllers.first as! MainTableViewController
         tableViewController.mechanic = offlineArray

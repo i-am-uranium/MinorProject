@@ -139,7 +139,7 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
         // Build all the "AND" expressions for each value in the searchString.
         let andMatchPredicates: [NSPredicate] = searchItems.map { searchString in
             var searchItemsPredicate = [NSPredicate]()
-            // Name field matching.
+            // address field matching.
             let addressExpression = NSExpression(forKeyPath: "address")
             let searchStringExpression = NSExpression(forConstantValue: searchString)
             
