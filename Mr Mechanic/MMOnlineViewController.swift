@@ -19,11 +19,11 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     let MUL = 1000
     var lt:Double?
     var ln:Double?
-    var fromLocation:CLLocation?
+    
     
 
-    
     // MARK: - Properties
+    var fromLocation:CLLocation?
     var locationMgr:CLLocationManager!
     var dataStoring = [MMOnlineModel]()
     var model:MMOnlineModel?
@@ -45,7 +45,6 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     override func viewDidLoad() {
         super.viewDidLoad()
         myLocationAction()
-        loadData()
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backButton
         self.tableview.addSubview(self.refreshControl)
@@ -56,14 +55,48 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     
     
     override func viewDidAppear(animated: Bool) {
-       self.loadData()
+        networking()
+
     }
    
+    
+    
+    //MARK: Handle networking issue
+   @IBAction func networking(){
+        let status = Reach().connectionStatus()
+        switch status {
+        case .Unknown, .Offline:
+            
+            let alert  = UIAlertController(title: "Oops!", message: "data not available switch to Offline Mode OR hit retry", preferredStyle: UIAlertControllerStyle.Alert)
+            let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel){
+                UIAlertAction in
+            }
+            alert.addAction(cancel)
+            alert.addAction(UIAlertAction(title: "Retry", style: UIAlertActionStyle.Default){
+                UIAlertAction in
+                self.viewDidAppear(true)
+                
+                })
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            print("Not connected")
+        case .Online(.WWAN):
+            self.loadData()
+            print("Connected via WWAN")
+        case .Online(.WiFi):
+            self.loadData()
+            print("Connected via WiFi")
+        }
+        
+    }
+    
+    
+    
     
     //MARK: Pull to refresh
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        self.loadData()
+        networking()
         refreshControl.endRefreshing()
     }
     
@@ -123,17 +156,6 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
                 
             } else {
                 
-                let alert  = UIAlertController(title: "Oops!", message: "data not available switch to Offline Mode OR hit retry", preferredStyle: UIAlertControllerStyle.Alert)
-                let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel){
-                    UIAlertAction in
-                }
-                alert.addAction(cancel)
-                alert.addAction(UIAlertAction(title: "Retry", style: UIAlertActionStyle.Default){
-                    UIAlertAction in
-                    self.loadData()
-                    
-                    })
-                self.presentViewController(alert, animated: true, completion: nil)
                 print("Error: \(error!) \(error!.userInfo)")
             }
         }

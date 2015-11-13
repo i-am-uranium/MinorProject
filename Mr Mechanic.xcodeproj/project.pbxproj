@@ -21,6 +21,7 @@
 		FA1C6E711BD19F300047071D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1C6E701BD19F300047071D /* CoreGraphics.framework */; };
 		FA1C6E731BD19F3B0047071D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1C6E721BD19F3B0047071D /* AudioToolbox.framework */; };
 		FA1C6E751BD19F4B0047071D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1C6E741BD19F4B0047071D /* Accounts.framework */; };
+		FA30C7D11BF5CC1900C364D7 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30C7D01BF5CC1900C364D7 /* Reach.swift */; };
 		FA4020A31BD12A82001DF28A /* MMAboutUsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4020A21BD12A82001DF28A /* MMAboutUsTableViewCell.swift */; };
 		FA468B931BD41CCB00368349 /* MMSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA468B921BD41CCA00368349 /* MMSocialViewController.swift */; };
 		FA468B951BD4304700368349 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA468B941BD4304700368349 /* Social.framework */; };
@@ -90,6 +91,7 @@
 		FA1C6E741BD19F4B0047071D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		FA1C6E761BD19F7B0047071D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		FA1C6E771BD19F7B0047071D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		FA30C7D01BF5CC1900C364D7 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		FA4020A21BD12A82001DF28A /* MMAboutUsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMAboutUsTableViewCell.swift; sourceTree = "<group>"; };
 		FA468B921BD41CCA00368349 /* MMSocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSocialViewController.swift; sourceTree = "<group>"; };
 		FA468B941BD4304700368349 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -178,6 +180,7 @@
 		FA17A4501BEBC4C400EF3682 /* Other File */ = {
 			isa = PBXGroup;
 			children = (
+				FA30C7D01BF5CC1900C364D7 /* Reach.swift */,
 				FA4F5FA11BDE6A46005B561B /* MMAboutAppViewController.swift */,
 				FA5C9E501BDAA50000F88760 /* TestTableViewController.swift */,
 				FA4F5FA31BDE758C005B561B /* MMAlert.swift */,
@@ -498,6 +501,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FADEA9C81BD2CB8B00C1BCB7 /* MMOnlineTableViewCell.swift in Sources */,
+				FA30C7D11BF5CC1900C364D7 /* Reach.swift in Sources */,
 				FADEA9CA1BD2D5FC00C1BCB7 /* MMOnlineModel.swift in Sources */,
 				FA4F5FA21BDE6A46005B561B /* MMAboutAppViewController.swift in Sources */,
 				FA8FD3861BD61745009C06C4 /* MainTableViewController.swift in Sources */,
