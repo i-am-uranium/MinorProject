@@ -80,7 +80,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKs-X6-74T">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKs-X6-74T">
                                 <rect key="frame" x="24" y="449" width="40" height="40"/>
                                 <animations/>
                                 <state key="normal" image="facebook-40"/>
@@ -88,7 +88,7 @@
                                     <action selector="facebook:" destination="qGL-Wz-2H4" eventType="touchUpInside" id="rvZ-uZ-Q9a"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25q-QL-yA5">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25q-QL-yA5">
                                 <rect key="frame" x="72" y="450" width="40" height="40"/>
                                 <animations/>
                                 <state key="normal" image="twitter-40"/>
