@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path), options: NSDataReadingOptions.DataReadingMappedIfSafe)
                 let jsonObj = JSON(data: data)
                 if jsonObj != JSON.nullJSON {
-                   // print("jsonData:\(jsonObj)")
+                    //print("jsonData:\(jsonObj)")
                     
                     let results = jsonObj["results"].array
                     if results != nil{

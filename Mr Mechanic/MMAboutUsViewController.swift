@@ -32,10 +32,10 @@ class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewD
         navigationItem.backBarButtonItem = backButton
         tableView.delegate = self
         tableView.dataSource = self
-        let backImage = UIImage(named: "simpleImage")
+//        let backImage = UIImage(named: "simpleImage")
         self.title = "About Us"
         self.tableView.backgroundColor = UIColor.clearColor()
-        self.view.backgroundColor = UIColor(patternImage: backImage!)
+        self.view.backgroundColor = UIColor.whiteColor()
         self.suggestion.layer.borderWidth = 1.0
         self.suggestion.layer.borderColor = UIColor(netHex: 0x3F51B5).CGColor
         self.suggestion.layer.cornerRadius = 3.0

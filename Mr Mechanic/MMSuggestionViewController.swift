@@ -28,7 +28,7 @@ class MMSuggestionViewController: UIViewController,MFMailComposeViewControllerDe
     func boarderAddingTofields(){
 
         self.title = "Suggestion"
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "simpleImage")!)
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "simpleImage")!)
         self.suggestionField.layer.cornerRadius = 5.0
         self.suggestionField.layer.borderColor = UIColor.grayColor().CGColor
         self.suggestionField.layer.borderWidth = 0.25
@@ -105,7 +105,7 @@ class MMSuggestionViewController: UIViewController,MFMailComposeViewControllerDe
     
     // display error if any field is empty
     func displayError(){
-        let error = UIAlertController(title: "Erro!", message: "One or More Fields Are empty!", preferredStyle: UIAlertControllerStyle.Alert)
+        let error = UIAlertController(title: "Error!", message: "One or More Fields Are empty!", preferredStyle: UIAlertControllerStyle.Alert)
         error.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(error, animated: true, completion: nil)
     }

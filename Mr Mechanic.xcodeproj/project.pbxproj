@@ -54,6 +54,7 @@
 		FADEA9CA1BD2D5FC00C1BCB7 /* MMOnlineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEA9C91BD2D5FB00C1BCB7 /* MMOnlineModel.swift */; };
 		FAE6E2B11BD125CC0014A4B3 /* MMAboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE6E2B01BD125CB0014A4B3 /* MMAboutUsViewController.swift */; };
 		FAFCAEC01BD96691009526DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFCAEBF1BD96690009526DA /* LaunchScreen.storyboard */; };
+		FAFDBB661C02081000C3B281 /* MMTestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFDBB651C02081000C3B281 /* MMTestTableViewCell.swift */; };
 		FAFF8E871BD4BEA400D93CB4 /* response.json in Resources */ = {isa = PBXBuildFile; fileRef = FAFF8E861BD4BEA400D93CB4 /* response.json */; };
 /* End PBXBuildFile section */
 
@@ -91,13 +92,13 @@
 		FA1C6E741BD19F4B0047071D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		FA1C6E761BD19F7B0047071D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		FA1C6E771BD19F7B0047071D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		FA30C7D01BF5CC1900C364D7 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
+		FA30C7D01BF5CC1900C364D7 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reach.swift; path = "Mr Mechanic/Reach.swift"; sourceTree = "<group>"; };
 		FA4020A21BD12A82001DF28A /* MMAboutUsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMAboutUsTableViewCell.swift; sourceTree = "<group>"; };
 		FA468B921BD41CCA00368349 /* MMSocialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSocialViewController.swift; sourceTree = "<group>"; };
 		FA468B941BD4304700368349 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		FA468B961BD440C100368349 /* MMRestApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMRestApiManager.swift; sourceTree = "<group>"; };
 		FA4F5FA11BDE6A46005B561B /* MMAboutAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMAboutAppViewController.swift; sourceTree = "<group>"; };
-		FA4F5FA31BDE758C005B561B /* MMAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMAlert.swift; sourceTree = "<group>"; };
+		FA4F5FA31BDE758C005B561B /* MMAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MMAlert.swift; path = "Mr Mechanic/MMAlert.swift"; sourceTree = "<group>"; };
 		FA5C67FD1BD16C4A00B836E0 /* MMSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSuggestionViewController.swift; sourceTree = "<group>"; };
 		FA5C9E501BDAA50000F88760 /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		FA67041B1BD218B200F1CE17 /* Mr Mechanic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Mr Mechanic-Bridging-Header.h"; path = "Mr Mechanic/Mr Mechanic-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		FADEA9C91BD2D5FB00C1BCB7 /* MMOnlineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOnlineModel.swift; sourceTree = "<group>"; };
 		FAE6E2B01BD125CB0014A4B3 /* MMAboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMAboutUsViewController.swift; sourceTree = "<group>"; };
 		FAFCAEBF1BD96690009526DA /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FAFDBB651C02081000C3B281 /* MMTestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMTestTableViewCell.swift; sourceTree = "<group>"; };
 		FAFF8E861BD4BEA400D93CB4 /* response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,17 +179,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA17A4501BEBC4C400EF3682 /* Other File */ = {
-			isa = PBXGroup;
-			children = (
-				FA30C7D01BF5CC1900C364D7 /* Reach.swift */,
-				FA4F5FA11BDE6A46005B561B /* MMAboutAppViewController.swift */,
-				FA5C9E501BDAA50000F88760 /* TestTableViewController.swift */,
-				FA4F5FA31BDE758C005B561B /* MMAlert.swift */,
-			);
-			name = "Other File";
-			sourceTree = "<group>";
-		};
 		FA17A4511BEBC50400EF3682 /* Helping Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +189,15 @@
 				FAFCAEBF1BD96690009526DA /* LaunchScreen.storyboard */,
 			);
 			name = "Helping Files";
+			sourceTree = "<group>";
+		};
+		FA373D0E1BF871360043505A /* ServerTesting */ = {
+			isa = PBXGroup;
+			children = (
+				FA5C9E501BDAA50000F88760 /* TestTableViewController.swift */,
+				FAFDBB651C02081000C3B281 /* MMTestTableViewCell.swift */,
+			);
+			name = ServerTesting;
 			sourceTree = "<group>";
 		};
 		FA8C9EF11BC59F3D00A81384 = {
@@ -223,17 +223,17 @@
 		FA8C9EFC1BC59F3D00A81384 /* Mr Mechanic */ = {
 			isa = PBXGroup;
 			children = (
+				FA373D0E1BF871360043505A /* ServerTesting */,
 				FA8FD38D1BD6174F009C06C4 /* MMOffline */,
 				FAB902F21BC7F9850074A87E /* Frameworks */,
-				FAAF5EB31BCE26E9001C2B4C /* SwiftyJSON */,
+				FAAF5EB31BCE26E9001C2B4C /* ThirdpartyLibrary */,
 				FA914F421BC5B39200539A20 /* Delegate */,
 				FADEA9C61BD2CB3800C1BCB7 /* Online */,
-				FAE6E2AF1BD1257B0014A4B3 /* AboutUS */,
+				FAE6E2AF1BD1257B0014A4B3 /* About */,
 				FA914F401BC5B35B00539A20 /* Model */,
 				FA8C9F2B1BC59F4B00A81384 /* Extensions */,
 				FAAF5EB41BCE270F001C2B4C /* assets */,
 				FA17A4511BEBC50400EF3682 /* Helping Files */,
-				FA17A4501BEBC4C400EF3682 /* Other File */,
 			);
 			path = "Mr Mechanic";
 			sourceTree = "<group>";
@@ -296,19 +296,21 @@
 			name = Delegate;
 			sourceTree = "<group>";
 		};
-		FAAF5EB31BCE26E9001C2B4C /* SwiftyJSON */ = {
+		FAAF5EB31BCE26E9001C2B4C /* ThirdpartyLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				FA30C7D01BF5CC1900C364D7 /* Reach.swift */,
 				FAAF5EAD1BCE0186001C2B4C /* SwiftyJSON.swift */,
 				FAAF5EAF1BCE05B3001C2B4C /* SwiftyJSON.h */,
 			);
-			name = SwiftyJSON;
+			name = ThirdpartyLibrary;
 			path = ..;
 			sourceTree = "<group>";
 		};
 		FAAF5EB41BCE270F001C2B4C /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				FA4F5FA31BDE758C005B561B /* MMAlert.swift */,
 				FAFF8E861BD4BEA400D93CB4 /* response.json */,
 				FA67041B1BD218B200F1CE17 /* Mr Mechanic-Bridging-Header.h */,
 				FAA014881BCD9E860004E099 /* res.json */,
@@ -354,15 +356,16 @@
 			name = Online;
 			sourceTree = "<group>";
 		};
-		FAE6E2AF1BD1257B0014A4B3 /* AboutUS */ = {
+		FAE6E2AF1BD1257B0014A4B3 /* About */ = {
 			isa = PBXGroup;
 			children = (
+				FA4F5FA11BDE6A46005B561B /* MMAboutAppViewController.swift */,
 				FAE6E2B01BD125CB0014A4B3 /* MMAboutUsViewController.swift */,
 				FA4020A21BD12A82001DF28A /* MMAboutUsTableViewCell.swift */,
 				FA5C67FD1BD16C4A00B836E0 /* MMSuggestionViewController.swift */,
 				FA468B921BD41CCA00368349 /* MMSocialViewController.swift */,
 			);
-			name = AboutUS;
+			name = About;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -524,6 +527,7 @@
 				FAE6E2B11BD125CC0014A4B3 /* MMAboutUsViewController.swift in Sources */,
 				FAAF5EAE1BCE0186001C2B4C /* SwiftyJSON.swift in Sources */,
 				FA4F5FA41BDE758C005B561B /* MMAlert.swift in Sources */,
+				FAFDBB661C02081000C3B281 /* MMTestTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

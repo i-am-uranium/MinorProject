@@ -26,28 +26,25 @@ class RestApiManager {
     // Mark: Fetch Json Data
     
     func fetchData(){
-        let url = "https://itunes.apple.com/search?term=jack+johnson&limit=10"
+        let url = "http://localhost:8000/api/machs"
         
         do {
             let data = try NSData(contentsOfURL: NSURL(string: url)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             let jsonObj = JSON(data: data)
             if jsonObj != JSON.nullJSON {
-                //print("jsonData:\(jsonObj)")
-                
-                let results = jsonObj["results"].array
-                print(results)
+                let results = jsonObj[0]["results"].array
                 if results != nil{
                     for values in results!{
-
-                        self.name.append(values["collectionPrice"].stringValue)
-                        self.phone.append(values["artistId"].intValue)
-                        self.latt.append(values["artistId"].doubleValue)
-                        self.long.append(values["artistId"].doubleValue)
-                        self.rating.append(values["artistId"].floatValue)
-                        self.address.append(values["kind"].stringValue)
-                        self.local.append(values["kind"].stringValue)
-                        self.city.append(values["kind"].stringValue)
-                        self.country.append(values["kind"].stringValue)
+                        
+                            self.name.append(values["name"].stringValue)
+                            self.phone.append(values["ph"].intValue)
+                            self.latt.append(values["lat"].doubleValue)
+                            self.long.append(values["lon"].doubleValue)
+                            self.rating.append(values["rating"].floatValue)
+                            self.address.append(values["add"].stringValue)
+                            self.local.append(values["local"].stringValue)
+                            self.city.append(values["city"].stringValue)
+                            self.country.append(values["contry"].stringValue)
                         
                     }
                 }

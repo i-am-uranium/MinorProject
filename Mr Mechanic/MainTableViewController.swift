@@ -56,7 +56,7 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backButton
         resultsTableController = ResultsTableController()
