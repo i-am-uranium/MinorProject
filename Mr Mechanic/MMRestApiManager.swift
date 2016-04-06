@@ -38,7 +38,7 @@ class RestApiManager {
                 print(results)
                 if results != nil{
                     for values in results!{
-
+                        
                         self.name.append(values["collectionPrice"].stringValue)
                         self.phone.append(values["artistId"].intValue)
                         self.latt.append(values["artistId"].doubleValue)

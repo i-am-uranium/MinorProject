@@ -56,11 +56,11 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
+        //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backButton
         resultsTableController = ResultsTableController()
-
+        
         // We want to be the delegate for our filtered table so didSelectRowAtIndexPath(_:) is called for both tables.
         resultsTableController.tableView.delegate = self
         searchController = UISearchController(searchResultsController: resultsTableController)
@@ -139,7 +139,7 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
         // Build all the "AND" expressions for each value in the searchString.
         let andMatchPredicates: [NSPredicate] = searchItems.map { searchString in
             var searchItemsPredicate = [NSPredicate]()
-            // Name field matching.
+            // address field matching.
             let addressExpression = NSExpression(forKeyPath: "address")
             let searchStringExpression = NSExpression(forConstantValue: searchString)
             
@@ -161,7 +161,7 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
                 // `rating` field matching.
                 let cityExpression = NSExpression(forKeyPath: "rating")
                 let ratingPredicate = NSComparisonPredicate(leftExpression: cityExpression, rightExpression: targetNumberExpression, modifier: .DirectPredicateModifier, type: .EqualToPredicateOperatorType, options: .CaseInsensitivePredicateOption)
-            
+                
                 searchItemsPredicate.append(ratingPredicate)
                 
                 // `phone number` field matching.

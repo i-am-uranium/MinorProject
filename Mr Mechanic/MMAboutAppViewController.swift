@@ -10,13 +10,13 @@ import UIKit
 import Social
 
 class MMAboutAppViewController: UIViewController {
-
+    
     var alert = AlertAndAnimation()
     @IBOutlet weak var facebook: UIButton!
     @IBOutlet weak var twitter: UIButton!
     @IBOutlet weak var suggestionButton: UIButton!
     @IBOutlet weak var aboutAppTextView: UITextView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewEdit()
@@ -33,12 +33,12 @@ class MMAboutAppViewController: UIViewController {
         self.suggestionButton.layer.borderWidth = 1.0
         self.suggestionButton.layer.borderColor = UIColor(netHex: 0x3F51B5).CGColor
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         alert.animateRight(facebook)
         alert.animateLeft(twitter)
     }
-  
+    
     //Mark: - Social Link Integration
     
     @IBAction func facebook(sender: AnyObject) {
@@ -62,5 +62,5 @@ class MMAboutAppViewController: UIViewController {
             alert.alertView(title: "Accounts", message: "Please log in to your acount in your settings ", alertTitle: "Ok", view: self)
         }
     }
-
+    
 }

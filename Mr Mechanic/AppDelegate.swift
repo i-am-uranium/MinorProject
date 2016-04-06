@@ -8,31 +8,30 @@
 
 import UIKit
 
+var reachability:Reachability?
+var reachabilityStatus = " "
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
+    var internetCheck:Reachability?
     var lt:Double?
     var ln:Double?
     var offlineArray = [Mechanic]()
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         
         Parse.setApplicationId("HEJmj368db3vjcSG4u2kGkgDkPZvohy7XNQXLOnX",
             clientKey: "fKyQg8bEXrdoOdsv58FV45QzAgqTagWBFtcA3rIU")
         
-        // Mark: - UI Tint and Background
-        
-        let tintColor:UIColor = UIColor(netHex: 0x000000)
-        let barTintColor:UIColor = UIColor(netHex: 0xfa3562)
-        UINavigationBar.appearance().barTintColor = UIColor(netHex: 0x3F51B5)
-        UINavigationBar.appearance().tintColor = barTintColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: barTintColor]
-        UITabBar.appearance().tintColor = barTintColor
-        UILabel.appearance().textColor = tintColor
-        UITabBar.appearance().barTintColor = UIColor(netHex: 0x3F51B5)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
+        internetCheck = Reachability.reachabilityForInternetConnection()
+        internetCheck?.startNotifier()
+        statusChangedWithRichability(internetCheck!)
+        appearence()
+        print(reachabilityStatus)
         // Mark: - Offline Implementation
         
         if let path = NSBundle.mainBundle().pathForResource("response", ofType: "json") {
@@ -40,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path), options: NSDataReadingOptions.DataReadingMappedIfSafe)
                 let jsonObj = JSON(data: data)
                 if jsonObj != JSON.nullJSON {
-                   // print("jsonData:\(jsonObj)")
+                    // print("jsonData:\(jsonObj)")
                     
                     let results = jsonObj["results"].array
                     if results != nil{
@@ -73,12 +72,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let tabController = window!.rootViewController as! UITabBarController
-        tabController.selectedIndex = 1
+        tabController.selectedIndex = 2
         let navController = tabController.viewControllers!.first as! UINavigationController
         let tableViewController = navController.viewControllers.first as! MainTableViewController
         tableViewController.mechanic = offlineArray
-        
         return true
+    }
+    
+    func reachabilityChanged(notification:NSNotification){
+        reachability = notification.object as? Reachability
+        statusChangedWithRichability(reachability!)
+    }
+    func statusChangedWithRichability(currentReachabilityStatus:Reachability){
+        let networkStatus:NetworkStatus = currentReachabilityStatus.currentReachabilityStatus()
+        switch networkStatus.rawValue{
+        case NotReachable.rawValue:reachabilityStatus = NOACCESS
+        case ReachableViaWiFi.rawValue:reachabilityStatus = WIFI
+        case ReachableViaWWAN.rawValue:reachabilityStatus = WWAN
+        default:return
+        }
+        NSNotificationCenter.defaultCenter().postNotificationName("ReachStatusChanged", object: nil)
+    }
+    
+    
+    func appearence(){
+        let navigationBarAppearence = UINavigationBar.appearance()
+        navigationBarAppearence.barTintColor = THEME_COLOR
+        navigationBarAppearence.tintColor = UIColor.whiteColor()
+        navigationBarAppearence.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        UITabBar.appearance().tintColor = THEME_COLOR
+        //        UITabBar.appearance().barTintColor = THEME_COLOR
+    }
+    
+    
+    
+    
+    
+    
+    func applicationWillResignActive(application: UIApplication) {
+    }
+    
+    func applicationDidEnterBackground(application: UIApplication) {
+    }
+    
+    func applicationWillEnterForeground(application: UIApplication) {
+    }
+    
+    func applicationDidBecomeActive(application: UIApplication) {
+    }
+    
+    func applicationWillTerminate(application: UIApplication) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kReachabilityChangedNotification, object: nil)
+        //        self.saveContext()
     }
     
     
@@ -92,8 +137,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         return true
     }
-
-
-
+    
+    
+    
 }
 

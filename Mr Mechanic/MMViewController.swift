@@ -24,9 +24,10 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
     var dataReceived = [MMOnlineModel]()
     var subTitle:String?
     let tintColor:UIColor = UIColor(netHex: 0xfa3562)
+    var animation = AlertAndAnimation()
     
     // Mrak: - Properties
-    var animation = AlertAndAnimation()
+    
     @IBOutlet var mapOutlet: MKMapView!
     @IBOutlet var feedback: UIButton!
     @IBOutlet var myLocation: UIButton!
@@ -37,7 +38,7 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapImplementation()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
+        //        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "MMimage")!)
         
     }
     
@@ -46,7 +47,7 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         animation.animateRight(feedback)
         animation.animateLeft(direction)
         animation.animateRight(callButton)
-
+        
     }
     
     
@@ -83,7 +84,7 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         geoCoder.reverseGeocodeLocation(location){(placemarks, error) -> Void in
             
             if let validPlacemark = placemarks?.first{
-               
+                
                 let placemark = validPlacemark
                 let subLocality = placemark.subLocality
                 let locality = placemark.locality

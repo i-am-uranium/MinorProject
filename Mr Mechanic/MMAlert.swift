@@ -17,8 +17,8 @@ class AlertAndAnimation{
         if title.isEmpty{
             return
         }else{
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: alertTitle, style: UIAlertActionStyle.Default, handler: nil))
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: alertTitle, style: UIAlertActionStyle.Default, handler: nil))
             view.presentViewController(alert, animated: true, completion: nil)}
     }
     
@@ -53,6 +53,6 @@ class AlertAndAnimation{
     
     // MARK: - TextField animation
     func textFieldAnimation(text:UILabel){
-    text.alpha = 1.0
+        text.alpha = 1.0
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseTableViewController: UITableViewController {
-   
+    
     // MARK: Types
     
     static let nibName = "TableViewCell"

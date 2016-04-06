@@ -9,8 +9,8 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-
-  
+    
+    
     @IBOutlet var name: UILabel!
     @IBOutlet var rating: UILabel!
     @IBOutlet var phoneNumber: UILabel!
@@ -21,10 +21,10 @@ class TableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

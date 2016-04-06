@@ -10,7 +10,7 @@ import UIKit
 import Social
 
 class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-   
+    
     var alert = AlertAndAnimation()
     @IBOutlet var tableView: UITableView!
     @IBOutlet var suggestion: UIButton!
@@ -18,11 +18,11 @@ class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewD
         ("SocialIcon2","Twitter","http://www.twitter.com"),
         ("SocialIcon3","Google","http://www.google.com"),
         ("SocialIcon4","In","http://www.google.com")]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         vdd()
-
+        
     }
     
     
@@ -32,13 +32,13 @@ class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewD
         navigationItem.backBarButtonItem = backButton
         tableView.delegate = self
         tableView.dataSource = self
-        let backImage = UIImage(named: "simpleImage")
+        //        let backImage = UIImage(named: "simpleImage")
         self.title = "About Us"
         self.tableView.backgroundColor = UIColor.clearColor()
-        self.view.backgroundColor = UIColor(patternImage: backImage!)
         self.suggestion.layer.borderWidth = 1.0
         self.suggestion.layer.borderColor = UIColor(netHex: 0x3F51B5).CGColor
         self.suggestion.layer.cornerRadius = 3.0
+        view.backgroundColor = BACKGROUND_COLOR
     }
     
     
@@ -49,12 +49,11 @@ class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewD
         return 1
     }
     
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return socialLabNadImg.count
     }
     
-  
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MMAboutUsTableViewCell
         
@@ -74,10 +73,10 @@ class MMAboutUsViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         return cell
     }
-
-
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "social"){
