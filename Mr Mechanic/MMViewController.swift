@@ -50,8 +50,6 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         
     }
     
-    
-    
     // Mark: - Map Implementation
     func mapImplementation(){
         locationMgr = CLLocationManager()

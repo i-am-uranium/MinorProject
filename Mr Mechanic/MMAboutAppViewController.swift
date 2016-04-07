@@ -26,8 +26,8 @@ class MMAboutAppViewController: UIViewController {
     func viewEdit(){
         self.title = "Help"
         self.aboutAppTextView.layer.cornerRadius = 5.0
-        self.aboutAppTextView.layer.borderColor = UIColor.grayColor().CGColor
-        self.aboutAppTextView.layer.borderWidth = 0.25
+        //        self.aboutAppTextView.layer.borderColor = UIColor.grayColor().CGColor
+        //        self.aboutAppTextView.layer.borderWidth = 0.25
         self.aboutAppTextView.backgroundColor = UIColor.clearColor()
         self.suggestionButton.layer.cornerRadius = 3.0
         self.suggestionButton.layer.borderWidth = 1.0
