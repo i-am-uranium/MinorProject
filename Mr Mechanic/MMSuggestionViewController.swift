@@ -20,15 +20,14 @@ class MMSuggestionViewController: UIViewController,MFMailComposeViewControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         boarderAddingTofields()
     }
     
-    
-    
     func boarderAddingTofields(){
-
         self.title = "Suggestion"
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "simpleImage")!)
+        self.view.backgroundColor = BACKGROUND_COLOR
         self.suggestionField.layer.cornerRadius = 5.0
         self.suggestionField.layer.borderColor = UIColor.grayColor().CGColor
         self.suggestionField.layer.borderWidth = 0.25
@@ -44,20 +43,21 @@ class MMSuggestionViewController: UIViewController,MFMailComposeViewControllerDe
         self.sendSuggestion.layer.borderColor = UIColor(netHex: 0x3F51B5).CGColor
         
     }
-
     
-
     func getText(firsName:UITextField, lastName:UITextField, emailField:UITextField, suggestionField:UITextView)->(String,String,String,String){
-    
         let firsName = firsName.text
         let lastName = lastName.text
         let emailField = emailField.text
         let suggestionField = suggestionField.text
         return (firsName!,lastName!,emailField!,suggestionField)
-    
+        
     }
     
     
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
     
     // send suggestion button
     @IBAction func sendSuggestion(sender: AnyObject) {
@@ -83,8 +83,6 @@ class MMSuggestionViewController: UIViewController,MFMailComposeViewControllerDe
     }
     
     
-    
-    
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         switch result.rawValue {
         case MFMailComposeResultCancelled.rawValue :
@@ -101,8 +99,6 @@ class MMSuggestionViewController: UIViewController,MFMailComposeViewControllerDe
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
-    
     // display error if any field is empty
     func displayError(){
         let error = UIAlertController(title: "Erro!", message: "One or More Fields Are empty!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -110,22 +106,18 @@ class MMSuggestionViewController: UIViewController,MFMailComposeViewControllerDe
         self.presentViewController(error, animated: true, completion: nil)
     }
     
-    
-    
     @IBAction func dissmissKeyboard(sender: AnyObject) {
         self.resignFirstResponder()
     }
     
-    
-    
     // function to resign te keyboard fromthe textView
-     func textView(textView : UITextView, text: String) -> Bool{
+    func textView(textView : UITextView, text: String) -> Bool{
         if text == "\n" {
             textView.resignFirstResponder()
             return false
         }
         return true
     }
-
-
+    
+    
 }

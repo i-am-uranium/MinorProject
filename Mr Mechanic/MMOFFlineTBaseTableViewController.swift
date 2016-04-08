@@ -33,8 +33,30 @@ class BaseTableViewController: UITableViewController {
         
         cell.name.text = product.name
         cell.phoneNumber.text = String(product.phone)
-        cell.rating.text = String(product.rating)
+        //        cell.rating.text = String(product.rating)
         let locationText = product.local + " " + product.city + " " + product.country
         cell.location.text = locationText
+        let RATING = product.rating
+        
+        
+        if  RATING < 2.0{
+            cell.star1.hidden = true
+            cell.star2.hidden = true
+            cell.star3.hidden = true
+            cell.star4.hidden = true
+        }else if RATING < 3.0{
+            cell.star2.hidden = true
+            cell.star3.hidden = true
+            cell.star4.hidden = true
+            
+        }else if RATING < 4.0{
+            cell.star3.hidden = true
+            cell.star4.hidden = true
+            
+        }else if RATING < 5.0{
+            cell.star4.hidden = true
+        }else{
+            
+        }
     }
 }

@@ -20,14 +20,15 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     var lt:Double?
     var ln:Double?
     var fromLocation:CLLocation?
-    
-    // MARK: - Properties
     var locationMgr:CLLocationManager!
     var dataStoring = [MMOnlineModel]()
     var model:MMOnlineModel?
     var passingModel:MMOnlineModel?
     let tintColor:UIColor = UIColor(netHex: 0xfa3562)
     var idArray = [String]()
+    
+    // MARK: - Properties
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
@@ -42,6 +43,7 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableview.backgroundColor = BACKGROUND_COLOR
         myLocationAction()
         if reachabilityStatus == WIFI || reachabilityStatus == WWAN{
             loadData()
@@ -230,13 +232,35 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
             cell.rating.text = String(rating!)
             cell.address.text = "distance From You is: " + String(format: "%.3f", approxDistance) + " Km"
             cell.phone.text = "Phone:"
-            cell.star.image = UIImage(named: "star-40")
+            //            cell.star.image = UIImage(named: "star-40")
+            ratingDisplay(rating!,cell: cell)
             actInd.stopAnimating()
+            
         }
         return cell
     }
     
-    
+    func ratingDisplay(RATING:Float,cell:MMOnlineTableViewCell){
+        if  RATING < 2.0{
+            cell.star.hidden = true
+            cell.star2.hidden = true
+            cell.star3.hidden = true
+            cell.star4.hidden = true
+        }else if RATING < 3.0{
+            cell.star2.hidden = true
+            cell.star3.hidden = true
+            cell.star4.hidden = true
+            
+        }else if RATING < 4.0{
+            cell.star3.hidden = true
+            cell.star4.hidden = true
+            
+        }else if RATING < 5.0{
+            cell.star4.hidden = true
+        }else{
+            
+        }
+    }
     
     // MARK: - Navigation
     

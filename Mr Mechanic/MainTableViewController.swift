@@ -16,6 +16,9 @@ import UIKit
 class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
     // MARK: Types
     
+    var mechanic = [Mechanic]()
+    let tintColor = UIColor(netHex: 0xfa3562)
+    
     /// State restoration values.
     enum RestorationKeys : String {
         case viewControllerTitle
@@ -31,9 +34,7 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
     
     // MARK: Properties
     
-    /// Data model for the table view.
-    var mechanic = [Mechanic]()
-    let tintColor = UIColor(netHex: 0xfa3562)
+    
     
     /*
     The following 2 properties are set in viewDidLoad(),
@@ -67,7 +68,7 @@ class MainTableViewController: BaseTableViewController, UISearchBarDelegate, UIS
         searchController.searchResultsUpdater = self
         searchController.searchBar.sizeToFit()
         tableView.tableHeaderView = searchController.searchBar
-        tableView.tableHeaderView?.backgroundColor = tintColor
+        tableView.tableHeaderView?.backgroundColor = BACKGROUND_COLOR
         searchController.delegate = self
         searchController.dimsBackgroundDuringPresentation = false // default is YES
         searchController.searchBar.delegate = self    // so we can monitor text changes + others

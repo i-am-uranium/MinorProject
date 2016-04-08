@@ -15,7 +15,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     // MARK: Types
-    
+    var product: Mechanic!
     // Constants for Storyboard/ViewControllers.
     static let storyboardName = "Main"
     static let viewControllerIdentifier = "DetailViewController"
@@ -24,14 +24,27 @@ class DetailViewController: UIViewController {
     static let restoreProduct = "restoreProductKey"
     
     // MARK: Properties
+    @IBOutlet weak var dView: UIView!{
+        didSet{
+            dView.layer.cornerRadius = 3.0
+            dView.layer.shadowColor = UIColor.grayColor().CGColor
+            dView.layer.shadowOffset = CGSize.zero
+            dView.layer.shadowRadius = 4.0
+            dView.layer.shadowOpacity = 0.5
+        }
+    }
+    @IBOutlet weak var addressTextView: UITextView!
+    @IBOutlet weak var star1: UIImageView!
+    @IBOutlet weak var star2: UIImageView!
+    @IBOutlet weak var star3: UIImageView!
+    @IBOutlet weak var star4: UIImageView!
+    @IBOutlet weak var star5: UIImageView!
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var addressLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var cityLabel: UILabel!
     @IBOutlet var countryLabel: UILabel!
-    @IBOutlet var ratingLabel: UILabel!
     @IBOutlet var callButton: UIButton!
-    var product: Mechanic!
+    
     
     
     // MARK: Initialization
@@ -58,20 +71,39 @@ class DetailViewController: UIViewController {
     // MARK:- UIAppereance
     
     func uiAppearence(){
-        
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "simpleImage")!)
-        
-        title = product.name
+        self.view.backgroundColor = BACKGROUND_COLOR
+        title = product.name.uppercaseString
         nameLabel.text = title
-        addressLabel.text = product.address
+        addressTextView.text = product.address
         locationLabel.text = product.local
         cityLabel.text = product.city
         countryLabel.text = product.country
-        ratingLabel.text = String(product.rating)
         self.callButton.setTitleColor(UIColor(netHex: 0x800080), forState:UIControlState.Selected)
         self.callButton.layer.borderWidth = 1.0
         self.callButton.layer.borderColor = UIColor(netHex: 0x008000).CGColor
         self.callButton.layer.cornerRadius = 3.0
+        
+        let RATING = product.rating
+        
+        if  RATING < 2.0{
+            star1.hidden = true
+            star2.hidden = true
+            star3.hidden = true
+            star4.hidden = true
+        }else if RATING < 3.0{
+            star2.hidden = true
+            star3.hidden = true
+            star4.hidden = true
+            
+        }else if RATING < 4.0{
+            star3.hidden = true
+            star4.hidden = true
+            
+        }else if RATING < 5.0{
+            star4.hidden = true
+        }else{
+            
+        }
     }
     
     

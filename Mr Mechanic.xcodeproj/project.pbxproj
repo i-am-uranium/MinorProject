@@ -32,6 +32,9 @@
 		FA7959271CB533D20005128C /* MMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7959261CB533D20005128C /* MMConstants.swift */; };
 		FA88F7141CB686E7005ECAAD /* MMAddShopInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88F7131CB686E7005ECAAD /* MMAddShopInfoViewController.swift */; };
 		FA88F7161CB68A3A005ECAAD /* MMUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88F7151CB68A3A005ECAAD /* MMUtils.swift */; };
+		FA88F7191CB68BE3005ECAAD /* MMSparePartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88F7181CB68BE3005ECAAD /* MMSparePartsViewController.swift */; };
+		FA88F71B1CB68E23005ECAAD /* MMSparepartsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88F71A1CB68E23005ECAAD /* MMSparepartsCollectionViewCell.swift */; };
+		FA88F71D1CB6936B005ECAAD /* MMSpareParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88F71C1CB6936B005ECAAD /* MMSpareParts.swift */; };
 		FA8C9EFE1BC59F3D00A81384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C9EFD1BC59F3D00A81384 /* AppDelegate.swift */; };
 		FA8C9F031BC59F3D00A81384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8C9F011BC59F3D00A81384 /* Main.storyboard */; };
 		FA8C9F051BC59F3D00A81384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8C9F041BC59F3D00A81384 /* Assets.xcassets */; };
@@ -108,6 +111,9 @@
 		FA7959261CB533D20005128C /* MMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMConstants.swift; sourceTree = "<group>"; };
 		FA88F7131CB686E7005ECAAD /* MMAddShopInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMAddShopInfoViewController.swift; sourceTree = "<group>"; };
 		FA88F7151CB68A3A005ECAAD /* MMUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMUtils.swift; sourceTree = "<group>"; };
+		FA88F7181CB68BE3005ECAAD /* MMSparePartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSparePartsViewController.swift; sourceTree = "<group>"; };
+		FA88F71A1CB68E23005ECAAD /* MMSparepartsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSparepartsCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA88F71C1CB6936B005ECAAD /* MMSpareParts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSpareParts.swift; sourceTree = "<group>"; };
 		FA8C9EFA1BC59F3D00A81384 /* Mr Mechanic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mr Mechanic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8C9EFD1BC59F3D00A81384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8C9F021BC59F3D00A81384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -204,6 +210,15 @@
 			name = AddShopInfo;
 			sourceTree = "<group>";
 		};
+		FA88F7171CB68BC6005ECAAD /* SpareParts */ = {
+			isa = PBXGroup;
+			children = (
+				FA88F7181CB68BE3005ECAAD /* MMSparePartsViewController.swift */,
+				FA88F71A1CB68E23005ECAAD /* MMSparepartsCollectionViewCell.swift */,
+			);
+			name = SpareParts;
+			sourceTree = "<group>";
+		};
 		FA8C9EF11BC59F3D00A81384 = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +300,7 @@
 		FA8F06901CB4F29B008E5634 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FA88F7171CB68BC6005ECAAD /* SpareParts */,
 				FA88F7121CB686A2005ECAAD /* AddShopInfo */,
 				FA914F421BC5B39200539A20 /* Delegate */,
 				FA8FD38D1BD6174F009C06C4 /* MMOffline */,
@@ -323,6 +339,7 @@
 				FA8FD37F1BD61745009C06C4 /* MMMechanicDataModel.swift */,
 				FADEA9C91BD2D5FB00C1BCB7 /* MMOnlineModel.swift */,
 				FA468B961BD440C100368349 /* MMRestApiManager.swift */,
+				FA88F71C1CB6936B005ECAAD /* MMSpareParts.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -538,10 +555,13 @@
 				FA8F06931CB4F460008E5634 /* MMNavigationViewController.swift in Sources */,
 				FA88F7141CB686E7005ECAAD /* MMAddShopInfoViewController.swift in Sources */,
 				FAC9C5F41BD14880009B2802 /* MMUITabBarController.swift in Sources */,
+				FA88F71B1CB68E23005ECAAD /* MMSparepartsCollectionViewCell.swift in Sources */,
 				FA8FD3891BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift in Sources */,
 				FA8FD3871BD61745009C06C4 /* MMMechanicDataModel.swift in Sources */,
+				FA88F71D1CB6936B005ECAAD /* MMSpareParts.swift in Sources */,
 				FA468B931BD41CCB00368349 /* MMSocialViewController.swift in Sources */,
 				FA8FD38B1BD61745009C06C4 /* MMOFFlineTViewController.swift in Sources */,
+				FA88F7191CB68BE3005ECAAD /* MMSparePartsViewController.swift in Sources */,
 				FA8F068D1CB4F069008E5634 /* Reachability.m in Sources */,
 				FA468B971BD440C100368349 /* MMRestApiManager.swift in Sources */,
 				FA5C9E511BDAA50000F88760 /* TestTableViewController.swift in Sources */,

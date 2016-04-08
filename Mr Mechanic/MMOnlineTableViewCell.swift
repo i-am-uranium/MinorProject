@@ -9,7 +9,7 @@
 import UIKit
 
 class MMOnlineTableViewCell: UITableViewCell {
-
+    
     // MARK: - Properties
     
     @IBOutlet var name: UILabel!
@@ -18,14 +18,18 @@ class MMOnlineTableViewCell: UITableViewCell {
     @IBOutlet var phoneNumber: UILabel!
     @IBOutlet var phone: UILabel!
     @IBOutlet var star: UIImageView!
+    @IBOutlet weak var star2: UIImageView!
+    @IBOutlet weak var star3: UIImageView!
+    @IBOutlet weak var star4: UIImageView!
+    @IBOutlet weak var star5: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
-
+    
 }

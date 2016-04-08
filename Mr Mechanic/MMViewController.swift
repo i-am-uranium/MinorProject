@@ -56,16 +56,20 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         locationMgr?.delegate = self
         locationMgr?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.title = place?.name!
-        let location = CLLocationCoordinate2DMake((place?.latt!)!, (place?.long!)!)
-        print(location)
-        let span = MKCoordinateSpanMake(0.01, 0.01)
-        let region = MKCoordinateRegionMake(location, span)
-        self.mapOutlet.setRegion(region, animated: true)
-        let annatotion = MKPointAnnotation()
-        annatotion.coordinate = location
-        annatotion.title = place?.name!
-        annatotion.subtitle = place?.address!
-        self.mapOutlet.addAnnotation(annatotion)
+        if place != nil{
+            
+            
+            let location = CLLocationCoordinate2DMake((place?.latt!)!, (place?.long!)!)
+            print(location)
+            let span = MKCoordinateSpanMake(0.01, 0.01)
+            let region = MKCoordinateRegionMake(location, span)
+            self.mapOutlet.setRegion(region, animated: true)
+            let annatotion = MKPointAnnotation()
+            annatotion.coordinate = location
+            annatotion.title = place?.name!
+            annatotion.subtitle = place?.address!
+            self.mapOutlet.addAnnotation(annatotion)
+        }
     }
     
     @IBAction func myLocationAction(sender: AnyObject) {
@@ -108,7 +112,8 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         pointAnnotation.title = "You're here"
         pointAnnotation.subtitle = self.subTitle
         let pinAnnotaion = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
-        pinAnnotaion.tintColor = self.tintColor
+        pinAnnotaion.tintColor = THEME_COLOR
+        pinAnnotaion.backgroundColor = THEME_COLOR
         self.mapOutlet.centerCoordinate = pointAnnotation.coordinate
         self.mapOutlet.addAnnotation(pinAnnotaion.annotation!)
     }

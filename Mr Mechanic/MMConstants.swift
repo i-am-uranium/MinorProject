@@ -9,7 +9,7 @@
 import Foundation
 
 //MARK:-Color Constants
-let THEME_COLOR = UIColor(red: 246.0/255.0, green: 89.0/255.0, blue: 16.0/255.0, alpha: 1.0)
+let THEME_COLOR = UIColor(red: 0.0/255.0, green: 41.0/255.0, blue: 60.0/255.0, alpha: 1.0)
 let BACKGROUND_COLOR = UIColor(red: 240.0/255.0, green: 242.0/255.0, blue: 243.0/255.0, alpha: 1.0)
 //MARK:-NetWork stats
 let WIFI = "WIFI Available"

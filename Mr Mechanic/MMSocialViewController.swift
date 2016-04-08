@@ -25,7 +25,7 @@ class MMSocialViewController: UIViewController {
     func vdl(){
         let backImage = UIImage(named: "MMimage")
         self.view.backgroundColor = UIColor(patternImage: backImage!)
-        self.title = "Socail"
+        self.title = "Social"
         let url = NSURL(string: social!)
         let request = NSURLRequest(URL: url!)
         socialWebView.backgroundColor = UIColor.clearColor()
@@ -49,6 +49,6 @@ class MMSocialViewController: UIViewController {
         
         
     }
-  
+    
     
 }
