@@ -26,3 +26,4 @@ We have found the right solution for all these problems. “Mr. Mechanic” a sm
 
 ![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.47.18%20AM.png "Call Options")
 
+![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.47.33%20AM.png "Help Options")
