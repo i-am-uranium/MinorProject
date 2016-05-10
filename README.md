@@ -11,3 +11,18 @@ We have found the right solution for all these problems. “Mr. Mechanic” a sm
 
 ![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.45.03%20AM.png "Rating option for users")
 
+![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.45.51%20AM.png "Direction")
+
+
+
+
+
+![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.46.49%20AM.png "Spare part options")
+
+
+![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.46.53%20AM.png "Search options")
+
+![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.47.12%20AM.png "Offline Options")
+
+![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.47.18%20AM.png "Call Options")
+
