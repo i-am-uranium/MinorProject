@@ -9,5 +9,5 @@ We have found the right solution for all these problems. “Mr. Mechanic” a sm
 
 ![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.44.28%20AM.png "Mehchanic Shop Location")
 
-![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.45.03%20AM.png "Rating option for users)
+![Alt text](https://github.com/i-am-uranium/MinorProject/blob/master/Simulator%20Screen%20Shot%2001-May-2016%2C%207.45.03%20AM.png "Rating option for users")
 
