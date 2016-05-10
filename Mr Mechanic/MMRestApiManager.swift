@@ -31,7 +31,7 @@ class RestApiManager {
         do {
             let data = try NSData(contentsOfURL: NSURL(string: url)!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             let jsonObj = JSON(data: data)
-            if jsonObj != JSON.nullJSON {
+            if jsonObj != JSON.null {
                 //print("jsonData:\(jsonObj)")
                 
                 let results = jsonObj["results"].array

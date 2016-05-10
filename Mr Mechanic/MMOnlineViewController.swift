@@ -31,12 +31,12 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(MMOnlineViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         return refreshControl
     }()
     @IBOutlet var actInd: UIActivityIndicatorView!
     @IBOutlet var tableview: UITableView!
-    
+     
     
     
     // MARK: - View Life Cycle
@@ -246,6 +246,7 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
             cell.star2.hidden = true
             cell.star3.hidden = true
             cell.star4.hidden = true
+            cell.star5.hidden = true
         }else if RATING < 3.0{
             cell.star2.hidden = true
             cell.star3.hidden = true
@@ -257,7 +258,7 @@ class MMOnlineViewController: UIViewController,UITableViewDelegate,CLLocationMan
             
         }else if RATING < 5.0{
             cell.star4.hidden = true
-        }else{
+        }else if RATING == 5.0{
             
         }
     }

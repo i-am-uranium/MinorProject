@@ -30,11 +30,13 @@
 		FA5C67FE1BD16C4A00B836E0 /* MMSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C67FD1BD16C4A00B836E0 /* MMSuggestionViewController.swift */; };
 		FA5C9E511BDAA50000F88760 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C9E501BDAA50000F88760 /* TestTableViewController.swift */; };
 		FA7959271CB533D20005128C /* MMConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7959261CB533D20005128C /* MMConstants.swift */; };
+		FA7E04DD1CBC19FF003795AD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7E04DC1CBC19FF003795AD /* APIManager.swift */; };
 		FA88F7141CB686E7005ECAAD /* MMAddShopInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88F7131CB686E7005ECAAD /* MMAddShopInfoViewController.swift */; };
 		FA88F7161CB68A3A005ECAAD /* MMUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88F7151CB68A3A005ECAAD /* MMUtils.swift */; };
 		FA88F7191CB68BE3005ECAAD /* MMSparePartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88F7181CB68BE3005ECAAD /* MMSparePartsViewController.swift */; };
 		FA88F71B1CB68E23005ECAAD /* MMSparepartsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88F71A1CB68E23005ECAAD /* MMSparepartsCollectionViewCell.swift */; };
 		FA88F71D1CB6936B005ECAAD /* MMSpareParts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA88F71C1CB6936B005ECAAD /* MMSpareParts.swift */; };
+		FA8B3D281CD523A20085C9BB /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B3D271CD523A20085C9BB /* SwiftyJSON.swift */; };
 		FA8C9EFE1BC59F3D00A81384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C9EFD1BC59F3D00A81384 /* AppDelegate.swift */; };
 		FA8C9F031BC59F3D00A81384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8C9F011BC59F3D00A81384 /* Main.storyboard */; };
 		FA8C9F051BC59F3D00A81384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8C9F041BC59F3D00A81384 /* Assets.xcassets */; };
@@ -45,7 +47,7 @@
 		FA8F06931CB4F460008E5634 /* MMNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8F06921CB4F460008E5634 /* MMNavigationViewController.swift */; };
 		FA8FD3851BD61745009C06C4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD37D1BD61745009C06C4 /* DetailViewController.swift */; };
 		FA8FD3861BD61745009C06C4 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD37E1BD61745009C06C4 /* MainTableViewController.swift */; };
-		FA8FD3871BD61745009C06C4 /* MMMechanicDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD37F1BD61745009C06C4 /* MMMechanicDataModel.swift */; };
+		FA8FD3871BD61745009C06C4 /* Mechanic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD37F1BD61745009C06C4 /* Mechanic.swift */; };
 		FA8FD3881BD61745009C06C4 /* MMOFFlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD3801BD61745009C06C4 /* MMOFFlineTableViewCell.swift */; };
 		FA8FD3891BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD3811BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift */; };
 		FA8FD38A1BD61745009C06C4 /* MMOFFlineTResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8FD3821BD61745009C06C4 /* MMOFFlineTResultsTableController.swift */; };
@@ -55,7 +57,6 @@
 		FA9315941BD275FF00DBC5EF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9315931BD275FF00DBC5EF /* libsqlite3.dylib */; };
 		FA941DC01BD2C41700710319 /* MMOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA941DBF1BD2C41700710319 /* MMOnlineViewController.swift */; };
 		FAA014891BCD9E860004E099 /* res.json in Resources */ = {isa = PBXBuildFile; fileRef = FAA014881BCD9E860004E099 /* res.json */; };
-		FAAF5EAE1BCE0186001C2B4C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF5EAD1BCE0186001C2B4C /* SwiftyJSON.swift */; };
 		FAC9C5F41BD14880009B2802 /* MMUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9C5F31BD14880009B2802 /* MMUITabBarController.swift */; };
 		FADEA9C81BD2CB8B00C1BCB7 /* MMOnlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEA9C71BD2CB8B00C1BCB7 /* MMOnlineTableViewCell.swift */; };
 		FADEA9CA1BD2D5FC00C1BCB7 /* MMOnlineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEA9C91BD2D5FB00C1BCB7 /* MMOnlineModel.swift */; };
@@ -109,11 +110,13 @@
 		FA67041B1BD218B200F1CE17 /* Mr Mechanic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mr Mechanic-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA7119A31BDFD67A0031841A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FA7959261CB533D20005128C /* MMConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMConstants.swift; sourceTree = "<group>"; };
+		FA7E04DC1CBC19FF003795AD /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		FA88F7131CB686E7005ECAAD /* MMAddShopInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMAddShopInfoViewController.swift; sourceTree = "<group>"; };
 		FA88F7151CB68A3A005ECAAD /* MMUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMUtils.swift; sourceTree = "<group>"; };
 		FA88F7181CB68BE3005ECAAD /* MMSparePartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSparePartsViewController.swift; sourceTree = "<group>"; };
 		FA88F71A1CB68E23005ECAAD /* MMSparepartsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSparepartsCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA88F71C1CB6936B005ECAAD /* MMSpareParts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMSpareParts.swift; sourceTree = "<group>"; };
+		FA8B3D271CD523A20085C9BB /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		FA8C9EFA1BC59F3D00A81384 /* Mr Mechanic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mr Mechanic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8C9EFD1BC59F3D00A81384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA8C9F021BC59F3D00A81384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -131,7 +134,7 @@
 		FA8F06921CB4F460008E5634 /* MMNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMNavigationViewController.swift; sourceTree = "<group>"; };
 		FA8FD37D1BD61745009C06C4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FA8FD37E1BD61745009C06C4 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
-		FA8FD37F1BD61745009C06C4 /* MMMechanicDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMMechanicDataModel.swift; sourceTree = "<group>"; };
+		FA8FD37F1BD61745009C06C4 /* Mechanic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mechanic.swift; sourceTree = "<group>"; };
 		FA8FD3801BD61745009C06C4 /* MMOFFlineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOFFlineTableViewCell.swift; sourceTree = "<group>"; };
 		FA8FD3811BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOFFlineTBaseTableViewController.swift; sourceTree = "<group>"; };
 		FA8FD3821BD61745009C06C4 /* MMOFFlineTResultsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOFFlineTResultsTableController.swift; sourceTree = "<group>"; };
@@ -141,7 +144,6 @@
 		FA9315931BD275FF00DBC5EF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
 		FA941DBF1BD2C41700710319 /* MMOnlineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOnlineViewController.swift; sourceTree = "<group>"; };
 		FAA014881BCD9E860004E099 /* res.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = res.json; path = "Mr Mechanic/res.json"; sourceTree = "<group>"; };
-		FAAF5EAD1BCE0186001C2B4C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../SwiftyJSON.swift; sourceTree = "<group>"; };
 		FAAF5EAF1BCE05B3001C2B4C /* SwiftyJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SwiftyJSON.h; path = ../SwiftyJSON.h; sourceTree = "<group>"; };
 		FAC9C5F31BD14880009B2802 /* MMUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMUITabBarController.swift; sourceTree = "<group>"; };
 		FADEA9C71BD2CB8B00C1BCB7 /* MMOnlineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMOnlineTableViewCell.swift; sourceTree = "<group>"; };
@@ -274,7 +276,7 @@
 		FA8F068A1CB4F059008E5634 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				FAAF5EAD1BCE0186001C2B4C /* SwiftyJSON.swift */,
+				FA8B3D271CD523A20085C9BB /* SwiftyJSON.swift */,
 				FAAF5EAF1BCE05B3001C2B4C /* SwiftyJSON.h */,
 				FA67041B1BD218B200F1CE17 /* Mr Mechanic-Bridging-Header.h */,
 				FA8F068B1CB4F069008E5634 /* Reachability.h */,
@@ -336,7 +338,8 @@
 		FA914F401BC5B35B00539A20 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA8FD37F1BD61745009C06C4 /* MMMechanicDataModel.swift */,
+				FA8FD37F1BD61745009C06C4 /* Mechanic.swift */,
+				FA7E04DC1CBC19FF003795AD /* APIManager.swift */,
 				FADEA9C91BD2D5FB00C1BCB7 /* MMOnlineModel.swift */,
 				FA468B961BD440C100368349 /* MMRestApiManager.swift */,
 				FA88F71C1CB6936B005ECAAD /* MMSpareParts.swift */,
@@ -480,6 +483,7 @@
 				TargetAttributes = {
 					FA8C9EF91BC59F3D00A81384 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 5WKGPLXT56;
 					};
 					FA8C9F0D1BC59F3D00A81384 = {
 						CreatedOnToolsVersion = 7.0;
@@ -546,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7E04DD1CBC19FF003795AD /* APIManager.swift in Sources */,
 				FADEA9C81BD2CB8B00C1BCB7 /* MMOnlineTableViewCell.swift in Sources */,
 				FADEA9CA1BD2D5FC00C1BCB7 /* MMOnlineModel.swift in Sources */,
 				FA4F5FA21BDE6A46005B561B /* MMAboutAppViewController.swift in Sources */,
@@ -556,8 +561,9 @@
 				FA88F7141CB686E7005ECAAD /* MMAddShopInfoViewController.swift in Sources */,
 				FAC9C5F41BD14880009B2802 /* MMUITabBarController.swift in Sources */,
 				FA88F71B1CB68E23005ECAAD /* MMSparepartsCollectionViewCell.swift in Sources */,
+				FA8B3D281CD523A20085C9BB /* SwiftyJSON.swift in Sources */,
 				FA8FD3891BD61745009C06C4 /* MMOFFlineTBaseTableViewController.swift in Sources */,
-				FA8FD3871BD61745009C06C4 /* MMMechanicDataModel.swift in Sources */,
+				FA8FD3871BD61745009C06C4 /* Mechanic.swift in Sources */,
 				FA88F71D1CB6936B005ECAAD /* MMSpareParts.swift in Sources */,
 				FA468B931BD41CCB00368349 /* MMSocialViewController.swift in Sources */,
 				FA8FD38B1BD61745009C06C4 /* MMOFFlineTViewController.swift in Sources */,
@@ -575,7 +581,6 @@
 				FA8FD3881BD61745009C06C4 /* MMOFFlineTableViewCell.swift in Sources */,
 				FA8C9EFE1BC59F3D00A81384 /* AppDelegate.swift in Sources */,
 				FAE6E2B11BD125CC0014A4B3 /* MMAboutUsViewController.swift in Sources */,
-				FAAF5EAE1BCE0186001C2B4C /* SwiftyJSON.swift in Sources */,
 				FA4F5FA41BDE758C005B561B /* MMAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,6 +715,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -718,6 +725,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.RaviRanjan.Mr-Mechanic";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mr Mechanic/Mr Mechanic-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -729,6 +737,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -737,6 +747,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.RaviRanjan.Mr-Mechanic";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mr Mechanic/Mr Mechanic-Bridging-Header.h";
 			};
 			name = Release;

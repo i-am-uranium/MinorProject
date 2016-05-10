@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("HEJmj368db3vjcSG4u2kGkgDkPZvohy7XNQXLOnX",
             clientKey: "fKyQg8bEXrdoOdsv58FV45QzAgqTagWBFtcA3rIU")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.reachabilityChanged(_:)), name: kReachabilityChangedNotification, object: nil)
         internetCheck = Reachability.reachabilityForInternetConnection()
         internetCheck?.startNotifier()
         statusChangedWithRichability(internetCheck!)
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path), options: NSDataReadingOptions.DataReadingMappedIfSafe)
                 let jsonObj = JSON(data: data)
-                if jsonObj != JSON.nullJSON {
+                if jsonObj != JSON.null {
                     // print("jsonData:\(jsonObj)")
                     
                     let results = jsonObj["results"].array

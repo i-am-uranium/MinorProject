@@ -114,8 +114,10 @@ class MMViewController: UIViewController,CLLocationManagerDelegate {
         let pinAnnotaion = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
         pinAnnotaion.tintColor = THEME_COLOR
         pinAnnotaion.backgroundColor = THEME_COLOR
+        pinAnnotaion.pinTintColor = THEME_COLOR
         self.mapOutlet.centerCoordinate = pointAnnotation.coordinate
         self.mapOutlet.addAnnotation(pinAnnotaion.annotation!)
+        
     }
     
     
